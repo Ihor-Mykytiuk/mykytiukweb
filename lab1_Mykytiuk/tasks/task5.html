@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Завдання 5</title>
+    <script>
+      function factorial(n) {
+        if (n === 0 || n === 1) {
+          return 1;
+        } else {
+          return n * factorial(n - 1);
+        }
+      }
+      function fun() {
+        let sum = 0;
+        let x = parseInt(main_form.input_x.value);
+        let y = parseInt(main_form.input_y.value);
+        for (let i = 1; i <= 12; i++) {
+          sum += ((-1) ** (i - 1) * (i + 3)) / factorial(x + y);
+        }
+        main_form.result.value = sum;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Завдання 5</h1>
+    <form id="main_form">
+      <label for="input_x">x:</label>
+      <input type="text" id="input_x" /><br />
+      <label for="input_y">y:</label>
+      <input type="text" id="input_y" /><br />
+      <label for="result">Результат:</label>
+      <input type="text" size="12" id="result" value="" /><br />
+      <input type="button" onClick="fun();" value="Розрахувати" />
+    </form>
+  </body>
+</html>

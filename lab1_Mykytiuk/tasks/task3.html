@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Завдання 3</title>
+    <script>
+      function handleFocus(elementNumber) {
+        var element;
+        if (elementNumber === 1) {
+          element = document.getElementById("element2");
+          element.value = "Повідомлення для елемента 2 при onFocus";
+        } else if (elementNumber === 2) {
+          element = document.getElementById("element1");
+          element.value = "Повідомлення для елемента 1 при onFocus";
+        }
+      }
+
+      function handleSelect(elementNumber) {
+        var element;
+        if (elementNumber === 1) {
+          element = document.getElementById("element2");
+          element.value = "Повідомлення для елемента 2 при onSelect";
+        } else if (elementNumber === 2) {
+          element = document.getElementById("element1");
+          element.value = "Повідомлення для елемента 1 при onSelect";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Завдання 3</h1>
+    <form>
+      <label for="element1">Елемент 1:</label>
+      <input
+        type="text"
+        size="100"
+        id="element1"
+        onfocus="handleFocus(1)"
+        onselect="handleSelect(1)"
+      />
+      <br />
+      <label for="element2">Елемент 2:</label>
+      <input
+        type="text"
+        size="100"
+        id="element2"
+        onfocus="handleFocus(2)"
+        onselect="handleSelect(2)"
+      />
+    </form>
+
+    <script src="script.js"></script>
+  </body>
+</html>
