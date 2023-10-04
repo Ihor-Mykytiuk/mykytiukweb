@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function calculate() {
+        let length = parseInt(document.getElementById("input_length").value);
+        let width = parseInt(document.getElementById("input_width").value);
+
+        let diagonal = Math.sqrt(width ** 2 + length ** 2);
+        let area = length * width;
+        let perimeter = 2 * length + 2 * width;
+
+        document.getElementById("diagonal").textContent = diagonal;
+        document.getElementById("area").textContent = area;
+        document.getElementById("perimeter").textContent = perimeter;
+      }
+    </script>
+  </head>
+  <body>
+    <form id="main_form">
+      <label for="input_length">Довжина</label>
+      <input type="text" id="input_length" oninput="calculate()" /><br />
+      <label for="input_width">Ширина</label>
+      <input type="text" id="input_width" oninput="calculate()" />
+      <p>Периметр <span id="perimeter"></span></p>
+      <p>Площа <span id="area"></span></p>
+      <p>Довжина діагоналі <span id="diagonal"></span></p>
+    </form>
+  </body>
+</html>
