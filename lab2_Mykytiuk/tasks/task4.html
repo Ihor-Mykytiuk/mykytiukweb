@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Завдання 4</title>
+    <script>
+      function remainder_from_division() {
+        let num1 = 5;
+        let num2 = 2;
+        console.log("Остача від ділення", num1, num2, ": ", num1 % num2);
+      }
+      function remainder_zero() {
+        let num1 = 100;
+        let num2 = 2;
+        console.log(
+          "Остача від ділення",
+          num1,
+          num2,
+          "дорівнює нулю?",
+          num1 % num2 == 0
+        );
+      }
+      function combined_text_output() {
+        let fruits = ["яблука", "груші", "вишні"];
+        let num = 42;
+        console.log(
+          "Я люблю %s, %s і %s. Число: %d",
+          fruits[0],
+          fruits[1],
+          fruits[2],
+          num
+        );
+      }
+
+      combined_text_output();
+
+      remainder_from_division();
+      remainder_zero();
+      combined_text_output();
+    </script>
+  </head>
+  <body>
+    <h1>Завдання 4</h1>
+    <p>Метод console.log()</p>
+    <p>Необхідно відкрити панель DevTools</p>
+  </body>
+</html>

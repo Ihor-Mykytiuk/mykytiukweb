@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      console.info("Інформаційне повідомлення в консоль console.log().");
+      console.warn("Попереджувальне повідомлення в консоль console.warm().");
+      console.error("Повідомлення про помилку в консоль console.error()");
+      let myObject = { a: 1, b: 2, c: 3 };
+      console.log("Представлення об'єктів в консолі. Метод console.dir()");
+      console.dir(myObject);
+      let element = document.querySelector("body");
+      console.dirxml(element);
+      console.log(
+        "При виконанні console.time() і console.timeEnd(), виведеться час, який пройшов між виконаннями двох команд"
+      );
+      console.time("timer");
+      //код
+      console.timeEnd("timer");
+      console.log(
+        "При виконанні console.profile() і console.profileEnd(), браузер почне і закінчить реєстрацію профілю коду"
+      );
+      console.profile("myProfile");
+      //код
+      console.profileEnd("myProfile");
+      console.log(
+        "Console.assert() дозволяє перевірити умову і вивести повідомлення про помилку"
+      );
+      let x = 1;
+      let y = 5;
+      console.assert(x + y == 3, "x + y не дорівнює 3");
+    </script>
+  </head>
+  <body>
+    <h1>Завдання 5</h1>
+    <p>
+      Реалізація і дослідження методів: console.info(), console.warn(),
+      console.error(), .console.dir(), console.dirxml(), console.time(),
+      console.timeEnd(), console.profile(), console.profileEnd();
+      console.assert().
+    </p>
+    <p>Необхідно відкрити панель DevTools</p>
+  </body>
+</html>
