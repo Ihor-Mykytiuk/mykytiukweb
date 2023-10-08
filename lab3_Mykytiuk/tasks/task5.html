@@ -16,17 +16,26 @@
         task.innerHTML = `<div>${random_number1} x ${random_number2} = </div>`;
       }
       function change_task() {
-        create_task();
+        if (task_counter < 11) {
+          create_task();
+          task_counter++;
+        } else {
+          end_game.innerHTML = `Загальний рахунок ${
+            score * 10
+          }% (${score} правильних відповідей з 10)`;
+          let element = document.getElementById("check");
+          element.remove();
+        }
       }
       function check_task() {
         let task = document.getElementById("tasks");
-        let input = document.getElementById("input_result");
+        let input = document.getElementById("input_answer");
         let message = ``;
         if (input.value == result) {
           score++;
           message += `Правильна відповідь!`;
         } else {
-          message += `Помилка, правильна відповідь: ${result}`;
+          message += `Помилка, правильна відповідь «${result}»`;
         }
         result_message.innerHTML = message;
         change_task();
@@ -35,10 +44,11 @@
     </script>
   </head>
   <body onload="create_task()">
+    <p id="end_game"></p>
     <div id="tasks"></div>
-    <input type="text" id="input_result" />
+    <input type="text" id="input_answer" />
     <button id="next_task" onclick="change_task()">Наступне завдання</button>
     <button id="check" onclick="check_task()">Перевірити</button>
-    <div id="result_message"></div>
+    <p id="result_message"></p>
   </body>
 </html>
