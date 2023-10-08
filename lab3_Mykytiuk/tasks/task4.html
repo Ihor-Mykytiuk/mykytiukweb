@@ -4,6 +4,65 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Завдання 4</title>
+    <script>
+      let i = 0;
+      let file_names = [
+        "file1.jpg",
+        "file2.jpg",
+        "file3.jpg",
+        "file4.jpg",
+        "file5.jpg",
+      ];
+      function create_image(index = 0) {
+        image = document.getElementById("images");
+
+        image.innerHTML = `<img src="../image/${file_names[index]}"/>`;
+      }
+      function change_image(choice) {
+        if (choice === "next") {
+          i++;
+        } else if (choice === "prev") {
+          i--;
+        }
+        if (i == file_names.length) {
+          i = 0;
+        } else if (i == -1) {
+          i = file_names.length - 1;
+        }
+        create_image(i);
+      }
+    </script>
+    <style>
+      body {
+        display: flex;
+        height: 100vh;
+      }
+      .wrapper {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+      }
+      .change_button {
+        width: 150px;
+        height: 50px;
+      }
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
   </head>
-  <body></body>
+  <body onload="create_image()">
+    <div class="wrapper">
+      <div id="images"></div>
+      <div class="buttons">
+        <button class="change_button" onclick="change_image('prev')">
+          Назад
+        </button>
+        <button class="change_button" onclick="change_image('next')">
+          Вперед
+        </button>
+      </div>
+    </div>
+  </body>
 </html>
