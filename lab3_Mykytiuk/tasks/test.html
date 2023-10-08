@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Завдання 2</title>
+    <script>
+      let language = "ua";
+
+      const letters_ua = [
+        "й",
+        "ц",
+        "у",
+        "к",
+        "е",
+        "н",
+        "г",
+        "ш",
+        "щ",
+        "з",
+        "х",
+        "ї",
+        "ф",
+        "і",
+        "в",
+        "а",
+        "п",
+        "р",
+        "о",
+        "л",
+        "д",
+        "ж",
+        "є",
+        "я",
+        "ч",
+        "с",
+        "м",
+        "и",
+        "т",
+        "ь",
+        "б",
+        "ю",
+        ".",
+      ];
+      const letters_en = [
+        "q",
+        "w",
+        "e",
+        "r",
+        "t",
+        "y",
+        "u",
+        "i",
+        "o",
+        "p",
+        "[",
+        "]",
+        "a",
+        "s",
+        "d",
+        "f",
+        "g",
+        "h",
+        "j",
+        "k",
+        "l",
+        ";",
+        "'",
+
+        "z",
+        "x",
+        "c",
+        "v",
+        "b",
+        "n",
+        "m",
+        ",",
+        ".",
+        "/",
+      ];
+
+      function createKeyboard(letters = letters_ua) {
+        let keys = `<div class="row">`;
+        for (let i = 0; i < letters.length; i++) {
+          if (i == 12 || i == 23) {
+            keys += '</div><div class="row">';
+          }
+          keys += `<button class="key_button" onclick="addSymbol('${letters[i]}')">${letters[i]}</button>`;
+        }
+        keys += `</div>`; // +
+        //`<button class="key_button space" onclick="addSymbol(' ')"></button>`;
+        /*letters.map((key, index) => {
+          if (index % 11 === 0) {
+            keys += "<br>";
+          }
+          keys += `<button onclick="addSymbol('${key}')">${key}</button>`;
+        });*/
+        screenKeyboard.innerHTML = keys;
+      }
+      function clean() {
+        document.getElementById("display").value = "";
+      }
+      function addSymbol(key) {
+        document.getElementById("display").value += key;
+      }
+    </script>
+    <style>
+      .key_button {
+        padding: 13px 18px;
+        margin: 3px;
+      }
+      .display_keyboard {
+        display: flex;
+        flex-direction: column;
+        width: 700px;
+        margin: auto;
+      }
+      #display {
+        height: 100px;
+        font-size: 2em;
+      }
+      body {
+        display: flex;
+        height: 100vh;
+        background-color: #f7f7f7;
+      }
+      .space {
+        width: 300px;
+        margin: 0 auto;
+      }
+      .row {
+        margin: 0 auto;
+        width: fit-content;
+      }
+    </style>
+  </head>
+  <body onload="createKeyboard()">
+    <div class="display_keyboard">
+      <input type="text" id="display" />
+      <div id="screenKeyboard"></div>
+      <div class="row">
+        <button class="key_button space" onclick="addSymbol(' ')">SPACE</button>
+        <button class="key_button" onclick="clean()">Очистити поле</button>
+      </div>
+    </div>
+  </body>
+</html>
