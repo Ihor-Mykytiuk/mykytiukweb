@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=\, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let task_counter = 1;
+      let result;
+      let score = 0;
+      function create_task() {
+        let task = document.getElementById("tasks");
+        random_number1 = Math.floor(Math.random() * 9) + 1;
+        random_number2 = Math.floor(Math.random() * 9) + 1;
+        result = random_number1 * random_number2;
+        task.innerHTML = `<div>${random_number1} x ${random_number2} = </div>`;
+      }
+      function change_task() {
+        create_task();
+      }
+      function check_task() {
+        let task = document.getElementById("tasks");
+        let input = document.getElementById("input_result");
+        let message = ``;
+        if (input.value == result) {
+          score++;
+          message += `Правильна відповідь!`;
+        } else {
+          message += `Помилка, правильна відповідь: ${result}`;
+        }
+        result_message.innerHTML = message;
+        change_task();
+        input.value = "";
+      }
+    </script>
+  </head>
+  <body onload="create_task()">
+    <div id="tasks"></div>
+    <input type="text" id="input_result" />
+    <button id="next_task" onclick="change_task()">Наступне завдання</button>
+    <button id="check" onclick="check_task()">Перевірити</button>
+    <div id="result_message"></div>
+  </body>
+</html>
