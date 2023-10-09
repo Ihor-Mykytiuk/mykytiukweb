@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      let toggleSubMenuValue1 = false;
+      let toggleSubMenuValue2 = false;
+      function init() {
+        let str = "";
+        str += "<a href='javascript:toggleSubMenu(1)'>fruits</a>";
+        str += "<div id='subMain1'></div>";
+        str += "<a href='javascript:toggleSubMenu(2)'>vegetables</a>";
+        str += "<div id='subMain2'></div>";
+        document.getElementById("container").innerHTML = str;
+      }
+      function toggleSubMenu(choice) {
+        let str = "";
+
+        let toggleValue;
+        let items;
+
+        if (choice == 1) {
+          toggleValue = toggleSubMenuValue1;
+          items = ["apple", "pinaple", "appricot", "pear", "lemon"];
+          toggleSubMenuValue1 = !toggleSubMenuValue1;
+        } else {
+          toggleValue = toggleSubMenuValue2;
+          items = ["potatoes", "beetroot", "carrots", "pear"];
+          toggleSubMenuValue2 = !toggleSubMenuValue2;
+        }
+
+        if (!toggleValue) {
+          for (let item of items) {
+            str += item + "<br>";
+          }
+        }
+
+        document.getElementById(`subMain${choice}`).innerHTML = str;
+      }
+    </script>
+  </head>
+  <body onload="init()">
+    <div id="container"></div>
+  </body>
+</html>
