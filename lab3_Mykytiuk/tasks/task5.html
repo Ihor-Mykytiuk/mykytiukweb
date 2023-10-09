@@ -8,28 +8,30 @@
       let task_counter = 1;
       let result;
       let score = 0;
+
       function create_task() {
         let task = document.getElementById("tasks");
         random_number1 = Math.floor(Math.random() * 9) + 1;
         random_number2 = Math.floor(Math.random() * 9) + 1;
         result = random_number1 * random_number2;
-        task.innerHTML = `<div>${random_number1} x ${random_number2} = </div>`;
+        task.innerHTML = `${random_number1} x ${random_number2} = `;
+        document.getElementById("check").disabled = false;
+        task_counter++;
       }
       function change_task() {
+        let input = document.getElementById("input_answer");
         if (task_counter < 11) {
           create_task();
-          task_counter++;
         } else {
           end_game.innerHTML = `Загальний рахунок ${
             score * 10
           }% (${score} правильних відповідей з 10)`;
-          let element = document.getElementById("check");
-          element.remove();
         }
+        input.value = "";
       }
       function check_task() {
-        let task = document.getElementById("tasks");
         let input = document.getElementById("input_answer");
+        let task = document.getElementById("tasks");
         let message = ``;
         if (input.value == result) {
           score++;
@@ -37,18 +39,19 @@
         } else {
           message += `Помилка, правильна відповідь «${result}»`;
         }
-        result_message.innerHTML = message;
-        change_task();
-        input.value = "";
+        document.getElementById("result_message").textContent = message;
+        document.getElementById("check").disabled = true;
       }
     </script>
   </head>
   <body onload="create_task()">
     <p id="end_game"></p>
-    <div id="tasks"></div>
+    <label id="tasks"></label>
     <input type="text" id="input_answer" />
-    <button id="next_task" onclick="change_task()">Наступне завдання</button>
-    <button id="check" onclick="check_task()">Перевірити</button>
+    <div class="buttons">
+      <button id="next_task" onclick="change_task()">Наступне завдання</button>
+      <button id="check" onclick="check_task()">Перевірити</button>
+    </div>
     <p id="result_message"></p>
   </body>
 </html>
