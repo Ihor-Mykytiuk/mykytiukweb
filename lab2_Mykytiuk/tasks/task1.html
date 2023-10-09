@@ -3,15 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body onLoad="clock()">
-    <form name="clock">
-      Час:
-      <input type="text" name="time" size="8" value="" /><br />
-      Дата:
-      <input type="text" name="date" size="8" value="" />
-    </form>
+    <title>Завдання 1</title>
     <script language="JavaScript">
       let timeStr, dateStr;
       function clock() {
@@ -20,18 +12,22 @@
         minutes = now.getMinutes();
         seconds = now.getSeconds();
         timeStr = "" + hours;
-        timeStr += (minutes < 10 ? ":0" : ":") + minutes;
-        timeStr += (seconds < 10 ? ":0" : ":") + seconds;
-        document.clock.time.value = timeStr;
+        timeStr += (minutes < 10 ? "-0" : "-") + minutes;
+        timeStr += (seconds < 10 ? "-0" : "-") + seconds;
+
         date = now.getDate();
         month = now.getMonth() + 1;
-        year = now.getYear();
+        year = now.getFullYear();
         dateStr = "" + month;
-        dateStr += (date < 10 ? "/0" : "/") + date;
-        dateStr += "/" + year;
-        document.clock.date.value = dateStr;
-        Timer = setTimeout("clock()", 1000);
+        dateStr += (date < 10 ? "-0" : "-") + date;
+        dateStr += "-" + year;
+        let set_time = document.getElementById("my_clock");
+        set_time.innerHTML = `${dateStr}-${timeStr}`;
+        setTimeout(clock, 1000);
       }
     </script>
+  </head>
+  <body onLoad="clock()">
+    <div id="my_clock"></div>
   </body>
 </html>
