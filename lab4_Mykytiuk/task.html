@@ -1,12 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Тестування</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Тестування навичок програмування</h1>
-    
-</body>
+    <hr />
+    <main>
+      <form action="">
+        <fieldset>
+          <legend>Що серед наведеного є циклами?</legend>
+          <input type="checkbox" name="loop_for" value="correct" />
+          <label for="loop_for">for</label>
+          <input type="checkbox" name="if" />
+          <label for="if">if</label>
+          <input type="checkbox" name="loop_while" value="correct" />
+          <label for="loop_while">while</label>
+          <input type="checkbox" name="continue" value="correct" />
+          <label for="continue">continue</label>
+        </fieldset>
+        <fieldset>
+          <legend>
+            Що з наведеного є логічними операторами в програмуванні
+          </legend>
+          <input type="checkbox" name="and" value="correct" />
+          <label for="and">and</label>
+          <input type="checkbox" name="or" value="correct" />
+          <label for="or">or</label>
+          <input type="checkbox" name="null" value="correct" />
+          <label for="null">null</label>
+          <input type="checkbox" name="xor" />
+          <label for="xor">xor</label>
+        </fieldset>
+        <fieldset>
+          <legend>Що означає термін "індекс" у контексті масивів</legend>
+          <input type="radio" name="index" value="correct" />
+          <label for="index">Це номер елемента масиву</label>
+          <input type="radio" name="index" />
+          <label for="index">Це значення елемента масиву</label>
+          <input type="radio" name="index" />
+          <label for="index">Це ім'я масиву</label>
+          <input type="radio" name="index" />
+          <label for="index">Це тип масиву</label>
+        </fieldset>
+        <fieldset>
+          <legend>Які операції можна виконати зі стеком в програмуванні</legend>
+          <input type="radio" name="stack" value="correct" />
+          <label for="stack"
+            >Додавання та видалення елементів тільки з початку стеку</label
+          >
+          <input type="radio" name="stack" />
+          <label for="stack"
+            >Додавання та видалення елементів тільки з кінця стеку</label
+          >
+          <input type="radio" name="stack" />
+          <label for="stack"
+            >Додавання та видалення елементів з будь-якої позиції стеку</label
+          >
+          <input type="radio" name="stack" />
+          <label for="stack"
+            >Додавання елементів тільки з початку стеку, видалення тільки з
+            кінця стеку</label
+          >
+        </fieldset>
+        <fieldset>
+          <legend>
+            Які алгоритми сортування мають часову складність O(n log n)?
+          </legend>
+          <select name="algorithm" multiple>
+            <option value="correct">Швидке сортування</option>
+            <option value="correct">Сортування злиттям</option>
+            <option value="">Сортування бульбашкою</option>
+            <option value="">Сортування вставкою</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <legend>Як JavaScript можна оголосити змінну</legend>
+          <select name="variable" multiple>
+            <option value="correct">let</option>
+            <option value="correct">var</option>
+            <option value="">float</option>
+            <option value="">int</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <legend>
+            Яким ключовим словом оголошується змінна, яку після її оголошення
+            неможливо змінити
+          </legend>
+          <input type="text" id="input_answer" />
+        </fieldset>
+        <button type="button" id="check_answer">Перевірити</button>
+      </form>
+    </main>
+  </body>
 </html>
