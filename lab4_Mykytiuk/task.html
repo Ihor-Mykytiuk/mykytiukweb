@@ -5,68 +5,82 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Тестування</title>
+    <style>
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      fieldset {
+        margin-bottom: 20px;
+      }
+      #result {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    </style>
   </head>
   <body>
     <h1>Тестування навичок програмування</h1>
     <hr />
     <main>
       <form action="">
-        <fieldset>
-          <legend>Що серед наведеного є циклами?</legend>
-          <input type="checkbox" name="loop_for" value="correct" />
-          <label for="loop_for">for</label>
-          <input type="checkbox" name="if" />
-          <label for="if">if</label>
-          <input type="checkbox" name="loop_while" value="correct" />
-          <label for="loop_while">while</label>
-          <input type="checkbox" name="continue" value="correct" />
-          <label for="continue">continue</label>
-        </fieldset>
-        <fieldset>
-          <legend>
-            Що з наведеного є логічними операторами в програмуванні
-          </legend>
-          <input type="checkbox" name="and" value="correct" />
-          <label for="and">and</label>
-          <input type="checkbox" name="or" value="correct" />
-          <label for="or">or</label>
-          <input type="checkbox" name="null" value="correct" />
-          <label for="null">null</label>
-          <input type="checkbox" name="xor" />
-          <label for="xor">xor</label>
-        </fieldset>
-        <fieldset>
+        <fieldset id="question">
           <legend>Що означає термін "індекс" у контексті масивів</legend>
           <input type="radio" name="index" value="correct" />
-          <label for="index">Це номер елемента масиву</label>
+          <label for="index">Це номер елемента масиву</label><br />
+          <input type="radio" name="index" value="" />
+          <label for="index">Це значення елемента масиву</label><br />
           <input type="radio" name="index" />
-          <label for="index">Це значення елемента масиву</label>
-          <input type="radio" name="index" />
-          <label for="index">Це ім'я масиву</label>
+          <label for="index">Це ім'я масиву</label><br />
           <input type="radio" name="index" />
           <label for="index">Це тип масиву</label>
         </fieldset>
-        <fieldset>
+        <fieldset id="question">
           <legend>Які операції можна виконати зі стеком в програмуванні</legend>
           <input type="radio" name="stack" value="correct" />
           <label for="stack"
             >Додавання та видалення елементів тільки з початку стеку</label
-          >
+          ><br />
           <input type="radio" name="stack" />
           <label for="stack"
             >Додавання та видалення елементів тільки з кінця стеку</label
-          >
+          ><br />
           <input type="radio" name="stack" />
           <label for="stack"
             >Додавання та видалення елементів з будь-якої позиції стеку</label
-          >
+          ><br />
           <input type="radio" name="stack" />
           <label for="stack"
             >Додавання елементів тільки з початку стеку, видалення тільки з
             кінця стеку</label
           >
         </fieldset>
-        <fieldset>
+        <fieldset id="question">
+          <legend>Що серед наведеного є циклами?</legend>
+          <input type="checkbox" name="cycle" value="correct" />
+          <label for="operator">for</label>
+          <input type="checkbox" name="cycle" />
+          <label for="cycle">if</label>
+          <input type="checkbox" name="cycle" value="correct" />
+          <label for="operator">while</label>
+          <input type="checkbox" name="cycle" />
+          <label for="operator">continue</label>
+        </fieldset>
+        <fieldset id="question">
+          <legend>
+            Що з наведеного є логічними операторами в програмуванні
+          </legend>
+          <input type="checkbox" name="operator" value="correct" />
+          <label for="operator">and</label>
+          <input type="checkbox" name="operator" value="correct" />
+          <label for="operator">or</label>
+          <input type="checkbox" name="operator" value="" />
+          <label for="operator">null</label>
+          <input type="checkbox" name="operator" />
+          <label for="operator">xor</label>
+        </fieldset>
+        <fieldset id="question">
           <legend>
             Які алгоритми сортування мають часову складність O(n log n)?
           </legend>
@@ -77,7 +91,7 @@
             <option value="">Сортування вставкою</option>
           </select>
         </fieldset>
-        <fieldset>
+        <fieldset id="question">
           <legend>Як JavaScript можна оголосити змінну</legend>
           <select name="variable" multiple>
             <option value="correct">let</option>
@@ -86,7 +100,8 @@
             <option value="">int</option>
           </select>
         </fieldset>
-        <fieldset>
+
+        <fieldset id="question">
           <legend>
             Яким ключовим словом оголошується змінна, яку після її оголошення
             неможливо змінити
@@ -95,6 +110,40 @@
         </fieldset>
         <button type="button" id="check_answer">Перевірити</button>
       </form>
+      <div id="result"></div>
     </main>
+    <script>
+      const form = document.querySelector("form");
+      const checkButton = document.querySelector("#check_answer");
+      const result = document.querySelector("#result");
+      /*const correctAnswers = {
+        operator: "correct",
+        index: "correct",
+        cycle: "correct",
+
+        stack: "correct",
+
+        algorithm: "correct",
+        variable: "correct",
+        input_answer: "const",
+      };*/
+      checkButton.addEventListener("click", () => {
+        const formData = new FormData(form);
+        let score = 0;
+        for (let value of formData.values()) {
+          console.log(value);
+          if (value === "correct") {
+            score++;
+          }
+        }
+        result.innerHTML = `Ваш результат: ${score} балів`;
+      });
+
+      /*if (key === "algorithm" || key === "variable") {
+            if (correctAnswers[key].includes(value)) {
+              score++;
+            }
+          } else */
+    </script>
   </body>
 </html>
