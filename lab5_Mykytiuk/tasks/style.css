@@ -113,22 +113,24 @@ border-bottom:none;
 .nav {
     width: 150px;
   }
-  
+
   .nav li {
     list-style-type: none;
     background: #b4b3ff;
     padding-left: 0;
     position: relative;
   }
-  
+
   .nav a,
   .nav span {
     text-decoration: none;
     display: block;
-    padding: 5px 10px;
+    padding: 10px 25px;
+    margin: 1px;
     cursor: pointer;
+    color: black;
   }
-  
+
   .nav ul {
     display: none;
     position: absolute;
@@ -136,11 +138,21 @@ border-bottom:none;
     top: 0;
     width: 150px;
   }
-  
+  .nav a::before {
+    content: "►";
+    position: absolute;
+    left: 0px;
+  }
   ul.sub-menu-active {
     display: block;
   }
-  
-  a.sub-menu-active-a{
+  .nav ul li {
+    background: #fffe01;
+  }
+
+  a.sub-menu-active-a {
     background: #d4dc55;
+  }
+  a.sub-menu-active-a::before {
+    content: "▼";
   }
