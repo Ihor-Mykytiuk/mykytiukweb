@@ -1,11 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--- <link rel="stylesheet" type="text/css" href="style.css" />-->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .nav {
+        width: 150px;
+      }
+
+      .nav li {
+        list-style-type: none;
+        background: #b4b3ff;
+        padding-left: 0;
+        position: relative;
+      }
+
+      .nav a,
+      .nav span {
+        text-decoration: none;
+        display: block;
+        padding: 5px 10px;
+        cursor: pointer;
+        color: black;
+      }
+
+      .nav ul {
+        display: none;
+        position: absolute;
+        right: -150px;
+        top: 0;
+        width: 150px;
+      }
+
+      ul.sub-menu-active {
+        display: block;
+      }
+
+      a.sub-menu-active-a {
+        background: #d4dc55;
+      }
+    </style>
+    <title>Завдання 2</title>
+  </head>
+  <body>
+    <ul class="nav">
+      <li>
+        <a href="javascript:tabSwitch('sub-nav1');">пункт 1</a>
+        <ul class="sub-nav1">
+          <li><span>пункт 1.1</span></li>
+          <li><span>пункт 1.2</span></li>
+          <li><span>пункт 1.3</span></li>
+        </ul>
+      </li>
+      <li>
+        <a href="javascript:tabSwitch('sub-nav2');">пункт 2</a>
+        <ul class="sub-nav2">
+          <li><span>пункт 2.1</span></li>
+          <li>
+            <a href="javascript:tabSwitch('sub-sub-nav2');">пункт 2.2</a>
+            <ul class="sub-sub-nav2">
+              <li><span>пункт 2.2.1</span></li>
+              <li><span>пункт 2.2.2</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><span>пункт 3</span></li>
+    </ul>
+    <script>
+      function tabSwitch(active) {
+        let activeMenu = document.getElementsByClassName(active);
+        let subMenu1 = document.getElementsByClassName("sub-nav1");
+        let subMenu2 = document.getElementsByClassName("sub-nav2");
+        let subSubMenu2 = document.getElementsByClassName("sub-sub-nav2");
+        console.log(subMenu);
+        if (active == "sub-nav1") {
+          activeMenu[0].classList.toggle("sub-menu-active");
+          if (subMenu2[0].classList.contains("sub-menu-active")) {
+            subMenu2[0].classList.remove("sub-menu-active");
+          }
+        }
+        if (active == "sub-nav2") {
+          activeMenu[0].classList.toggle("sub-menu-active");
+          if (subMenu1[0].classList.contains("sub-menu-active")) {
+            subMenu1[0].classList.remove("sub-menu-active");
+          }
+          if (subSubMenu2[0].classList.contains("sub-menu-active")) {
+            subSubMenu2[0].classList.remove("sub-menu-active");
+          }
+        }
+        if (active == "sub-sub-nav2") {
+          activeMenu[0].classList.toggle("sub-menu-active");
+        }
+      }
+    </script>
+  </body>
 </html>

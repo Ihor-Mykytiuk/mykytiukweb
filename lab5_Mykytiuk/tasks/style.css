@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-body {
+body.task2 {
     background-image: url(background.jpg);
     background-repeat: no-repeat;
     background-position: top center;
@@ -109,3 +109,38 @@ ul.tabs li a.active {
 .content ul li:last-child { 
 border-bottom:none; 
 }
+/* ---------------------------------- */
+.nav {
+    width: 150px;
+  }
+  
+  .nav li {
+    list-style-type: none;
+    background: #b4b3ff;
+    padding-left: 0;
+    position: relative;
+  }
+  
+  .nav a,
+  .nav span {
+    text-decoration: none;
+    display: block;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .nav ul {
+    display: none;
+    position: absolute;
+    right: -150px;
+    top: 0;
+    width: 150px;
+  }
+  
+  ul.sub-menu-active {
+    display: block;
+  }
+  
+  a.sub-menu-active-a{
+    background: #d4dc55;
+  }
