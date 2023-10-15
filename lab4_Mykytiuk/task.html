@@ -27,77 +27,78 @@
       <form action="">
         <fieldset id="question">
           <legend>Що означає термін "індекс" у контексті масивів</legend>
-          <input type="radio" name="index" value="correct" />
-          <label for="index">Це номер елемента масиву</label><br />
-          <input type="radio" name="index" value="" />
-          <label for="index">Це значення елемента масиву</label><br />
-          <input type="radio" name="index" />
-          <label for="index">Це ім'я масиву</label><br />
-          <input type="radio" name="index" />
-          <label for="index">Це тип масиву</label>
+          <input type="radio" name="index" value="А" />
+          <label for="index">А. Це позиція елемента масиву</label><br />
+          <input type="radio" name="index" value="Б" />
+          <label for="index">Б. Це значення елемента масиву</label><br />
+          <input type="radio" name="index" value="В" />
+          <label for="index">В. Це ім'я масиву</label><br />
+          <input type="radio" name="index" value="Г" />
+          <label for="index">Г. Це тип масиву</label>
         </fieldset>
         <fieldset id="question">
           <legend>Які операції можна виконати зі стеком в програмуванні</legend>
-          <input type="radio" name="stack" value="correct" />
+          <input type="radio" name="stack" value="А" />
           <label for="stack"
-            >Додавання та видалення елементів тільки з початку стеку</label
+            >А. Додавання та видалення елементів тільки з початку стеку</label
           ><br />
-          <input type="radio" name="stack" />
+          <input type="radio" name="stack" value="Б" />
           <label for="stack"
-            >Додавання та видалення елементів тільки з кінця стеку</label
+            >Б. Додавання та видалення елементів тільки з кінця стеку</label
           ><br />
-          <input type="radio" name="stack" />
+          <input type="radio" name="stack" value="В" />
           <label for="stack"
-            >Додавання та видалення елементів з будь-якої позиції стеку</label
+            >В. Додавання та видалення елементів з будь-якої позиції
+            стеку</label
           ><br />
-          <input type="radio" name="stack" />
+          <input type="radio" name="stack" value="Г" />
           <label for="stack"
-            >Додавання елементів тільки з початку стеку, видалення тільки з
+            >Г. Додавання елементів тільки з початку стеку, видалення тільки з
             кінця стеку</label
           >
         </fieldset>
         <fieldset id="question">
           <legend>Що серед наведеного є циклами?</legend>
-          <input type="checkbox" name="cycle" value="correct" />
-          <label for="operator">for</label>
-          <input type="checkbox" name="cycle" />
-          <label for="cycle">if</label>
-          <input type="checkbox" name="cycle" value="correct" />
-          <label for="operator">while</label>
-          <input type="checkbox" name="cycle" />
-          <label for="operator">continue</label>
+          <input type="checkbox" name="cycle" value="А" />
+          <label for="operator">А. for</label>
+          <input type="checkbox" name="cycle" value="Б" />
+          <label for="cycle">Б. if</label>
+          <input type="checkbox" name="cycle" value="В" />
+          <label for="operator">В. while</label>
+          <input type="checkbox" name="cycle" value="Г" />
+          <label for="operator">Г. continue</label>
         </fieldset>
         <fieldset id="question">
           <legend>
             Що з наведеного є логічними операторами в програмуванні
           </legend>
-          <input type="checkbox" name="operator" value="correct" />
-          <label for="operator">and</label>
-          <input type="checkbox" name="operator" value="correct" />
-          <label for="operator">or</label>
-          <input type="checkbox" name="operator" value="" />
-          <label for="operator">null</label>
-          <input type="checkbox" name="operator" />
-          <label for="operator">xor</label>
+          <input type="checkbox" name="operator" value="А" />
+          <label for="operator">А. and</label>
+          <input type="checkbox" name="operator" value="Б" />
+          <label for="operator">Б. xor</label>
+          <input type="checkbox" name="operator" value="В" />
+          <label for="operator">В. null</label>
+          <input type="checkbox" name="operator" value="Г" />
+          <label for="operator">Г. or</label>
         </fieldset>
         <fieldset id="question">
           <legend>
             Які алгоритми сортування мають часову складність O(n log n)?
           </legend>
           <select name="algorithm" multiple>
-            <option value="correct">Швидке сортування</option>
-            <option value="correct">Сортування злиттям</option>
-            <option value="">Сортування бульбашкою</option>
-            <option value="">Сортування вставкою</option>
+            <option value="А">А. Сортування вставкою</option>
+            <option value="Б">Б. Сортування бульбашкою</option>
+            <option value="В">В. Швидке сортування</option>
+            <option value="Г">Г. Сортування злиттям</option>
           </select>
         </fieldset>
         <fieldset id="question">
           <legend>Як JavaScript можна оголосити змінну</legend>
           <select name="variable" multiple>
-            <option value="correct">let</option>
-            <option value="correct">var</option>
-            <option value="">float</option>
-            <option value="">int</option>
+            <option value="А">А. let</option>
+            <option value="Б">Б. var</option>
+            <option value="В">В. float</option>
+            <option value="Г">Г. int</option>
           </select>
         </fieldset>
 
@@ -106,7 +107,7 @@
             Яким ключовим словом оголошується змінна, яку після її оголошення
             неможливо змінити
           </legend>
-          <input type="text" id="input_answer" />
+          <input type="text" name="input_answer" value="" />
         </fieldset>
         <button type="button" id="check_answer">Перевірити</button>
       </form>
@@ -116,34 +117,40 @@
       const form = document.querySelector("form");
       const checkButton = document.querySelector("#check_answer");
       const result = document.querySelector("#result");
-      /*const correctAnswers = {
-        operator: "correct",
-        index: "correct",
-        cycle: "correct",
-
-        stack: "correct",
-
-        algorithm: "correct",
-        variable: "correct",
+      const correctAnswers = {
+        index: "А",
+        stack: "Б",
+        cycle: ["А", "В"],
+        operator: ["А", "Г"],
+        algorithm: ["В", "Г"],
+        variable: ["А", "Б"],
         input_answer: "const",
-      };*/
+      };
       checkButton.addEventListener("click", () => {
         const formData = new FormData(form);
         let score = 0;
-        for (let value of formData.values()) {
-          console.log(value);
-          if (value === "correct") {
-            score++;
-          }
-        }
-        result.innerHTML = `Ваш результат: ${score} балів`;
-      });
-
-      /*if (key === "algorithm" || key === "variable") {
+        for (let [key, value] of formData) {
+          if (Array.isArray(correctAnswers[key])) {
+            const selectedOptions = form.querySelectorAll(`:checked`);
+            if (selectedOptions.length > 2) {
+              continue;
+            }
             if (correctAnswers[key].includes(value)) {
               score++;
             }
-          } else */
+          } else {
+            if (correctAnswers[key] === value) {
+              score++;
+            }
+          }
+          console.log(key, value);
+
+          // Перевірка кількості вибраних варіантів
+          
+        }
+
+        result.textContent = `Ваш результат: ${score} балів`;
+      });
     </script>
   </body>
 </html>
