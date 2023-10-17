@@ -18,6 +18,34 @@
         font-size: 20px;
         font-weight: bold;
       }
+      table {
+        border-collapse: collapse;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+      th,
+      td {
+        padding: 5px;
+      }
+      #table_div {
+        margin-bottom: 20px;
+      }
+      #check_answer {
+        margin-bottom: 20px;
+        background-color: #4caf50; /* Зелений колір */
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
     </style>
   </head>
   <body>
@@ -25,8 +53,8 @@
     <hr />
     <main>
       <form action="">
-        <fieldset id="question">
-          <legend>Що означає термін "індекс" у контексті масивів</legend>
+        <fieldset>
+          <legend>1. Що означає термін "індекс" у контексті масивів</legend>
           <input type="radio" name="index" value="А" />
           <label for="index">А. Це позиція елемента масиву</label><br />
           <input type="radio" name="index" value="Б" />
@@ -36,8 +64,10 @@
           <input type="radio" name="index" value="Г" />
           <label for="index">Г. Це тип масиву</label>
         </fieldset>
-        <fieldset id="question">
-          <legend>Які операції можна виконати зі стеком в програмуванні</legend>
+        <fieldset>
+          <legend>
+            2. Які операції можна виконати зі стеком в програмуванні
+          </legend>
           <input type="radio" name="stack" value="А" />
           <label for="stack"
             >А. Додавання та видалення елементів тільки з початку стеку</label
@@ -57,8 +87,8 @@
             кінця стеку</label
           >
         </fieldset>
-        <fieldset id="question">
-          <legend>Що серед наведеного є циклами?</legend>
+        <fieldset>
+          <legend>3. Що серед наведеного є циклами?</legend>
           <input type="checkbox" name="cycle" value="А" />
           <label for="operator">А. for</label>
           <input type="checkbox" name="cycle" value="Б" />
@@ -68,9 +98,9 @@
           <input type="checkbox" name="cycle" value="Г" />
           <label for="operator">Г. continue</label>
         </fieldset>
-        <fieldset id="question">
+        <fieldset>
           <legend>
-            Що з наведеного є логічними операторами в програмуванні
+            4. Що з наведеного є логічними операторами в програмуванні
           </legend>
           <input type="checkbox" name="operator" value="А" />
           <label for="operator">А. and</label>
@@ -81,9 +111,9 @@
           <input type="checkbox" name="operator" value="Г" />
           <label for="operator">Г. or</label>
         </fieldset>
-        <fieldset id="question">
+        <fieldset>
           <legend>
-            Які алгоритми сортування мають часову складність O(n log n)?
+            5. Які алгоритми сортування мають часову складність O(n log n)?
           </legend>
           <select name="algorithm" multiple>
             <option value="А">А. Сортування вставкою</option>
@@ -92,8 +122,8 @@
             <option value="Г">Г. Сортування злиттям</option>
           </select>
         </fieldset>
-        <fieldset id="question">
-          <legend>Як JavaScript можна оголосити змінну</legend>
+        <fieldset>
+          <legend>6. Як JavaScript можна оголосити змінну</legend>
           <select name="variable" multiple>
             <option value="А">А. let</option>
             <option value="Б">Б. var</option>
@@ -102,63 +132,116 @@
           </select>
         </fieldset>
 
-        <fieldset id="question">
+        <fieldset>
           <legend>
-            Яким ключовим словом оголошується змінна, яку після її оголошення
+            7. Яким ключовим словом оголошується змінна, яку після її оголошення
             неможливо змінити
           </legend>
           <input type="text" name="input_answer" value="" />
         </fieldset>
         <button type="button" id="check_answer">Перевірити</button>
       </form>
+
+      <div id="table_div"></div>
       <div id="result"></div>
     </main>
     <script>
       const form = document.querySelector("form");
       const checkButton = document.querySelector("#check_answer");
       const result = document.querySelector("#result");
-      const correctAnswers = {
-        index: "А",
-        stack: "Б",
-        cycle: ["А", "В"],
-        operator: ["А", "Г"],
-        algorithm: ["В", "Г"],
-        variable: ["А", "Б"],
-        input_answer: "const",
+      const answers = {
+        index: {
+          answers: [],
+          correct: "А",
+          score: 0,
+        },
+        stack: {
+          answers: [],
+          correct: "Б",
+          score: 0,
+        },
+        cycle: {
+          answers: [],
+          correct: ["А", "В"],
+          score: 0,
+        },
+        operator: {
+          answers: [],
+          correct: ["А", "Г"],
+          score: 0,
+        },
+        algorithm: {
+          answers: [],
+          correct: ["В", "Г"],
+          score: 0,
+        },
+        variable: {
+          answers: [],
+          correct: ["А", "Б"],
+          score: 0,
+        },
+        input_answer: {
+          answers: [],
+          correct: "const",
+          score: 0,
+        },
       };
-      let userAnswers = [];
       checkButton.addEventListener("click", () => {
         const formData = new FormData(form);
         let score = 0;
-        for (let [key, value] of formData) {
-          if (Array.isArray(correctAnswers[key])) {
-            let selectedOptions;
-            if (form.querySelector(`input[name="${key}"]`)) {
-              selectedOptions = form.querySelectorAll(
-                `input[name="${key}"]:checked`
-              );
-            } else if (form.querySelector(`select[name="${key}"]`)) {
-              selectedOptions = form.querySelectorAll(
-                `select[name="${key}"] option:checked`
-              );
+
+        for (let key in answers) {
+          answers[key].answers = []; // Очищаємо масив відповідей перед перевіркою
+          answers[key].score = 0;
+          // Зміни
+          if (Array.isArray(answers[key].correct)) {
+            let selectedOptions = formData.getAll(key);
+            answers[key].answers.push(selectedOptions);
+            if (selectedOptions.length > answers[key].correct.length) {
+              continue; // Якщо вибрано більше відповідей, ніж має бути, пропускаємо це питання
             }
-            if (selectedOptions.length > 2) {
-              continue;
-            }
-            if (correctAnswers[key].includes(value)) {
-              score++;
+            for (let value of selectedOptions) {
+              if (answers[key].correct.includes(value)) {
+                score++;
+                answers[key].score++;
+              }
             }
           } else {
-            if (correctAnswers[key] === value) {
+            let value = formData.get(key);
+            answers[key].answers.push(value);
+            if (answers[key].correct === value) {
               score++;
+              answers[key].score++;
             }
           }
-          userAnswers.push(value);
-          console.log(userAnswers);
         }
 
         result.textContent = `Ваш результат: ${score} балів`;
+        tableBuild();
       });
+
+      function tableBuild() {
+        let res_str = "<table>\n";
+        res_str += "<tr>\n";
+        res_str += "<th>Питання</th>\n";
+
+        res_str += "<th>Ваші відповіді</th>\n";
+        res_str += "<th>Правильна відповідь</th>\n";
+        res_str += "<th>Бали</th>\n";
+        let i = 1;
+        for (const key in answers) {
+          res_str += "<tr>\n";
+          res_str += `<td>Запитання ${i}</td>\n`;
+          res_str += `<td>${answers[key].answers}</td>\n`;
+          res_str += `<td>${answers[key].correct}</td>\n`;
+          res_str += `<td>${answers[key].score}</td>\n`;
+          res_str += "</tr>\n";
+          i++;
+        }
+
+        res_str += "</table>\n";
+        document.getElementById("table_div").innerHTML = res_str;
+      }
     </script>
   </body>
 </html>
