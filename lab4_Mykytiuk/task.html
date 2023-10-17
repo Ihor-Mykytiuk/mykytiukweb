@@ -126,12 +126,22 @@
         variable: ["А", "Б"],
         input_answer: "const",
       };
+      let userAnswers = [];
       checkButton.addEventListener("click", () => {
         const formData = new FormData(form);
         let score = 0;
         for (let [key, value] of formData) {
           if (Array.isArray(correctAnswers[key])) {
-            const selectedOptions = form.querySelectorAll(`:checked`);
+            let selectedOptions;
+            if (form.querySelector(`input[name="${key}"]`)) {
+              selectedOptions = form.querySelectorAll(
+                `input[name="${key}"]:checked`
+              );
+            } else if (form.querySelector(`select[name="${key}"]`)) {
+              selectedOptions = form.querySelectorAll(
+                `select[name="${key}"] option:checked`
+              );
+            }
             if (selectedOptions.length > 2) {
               continue;
             }
@@ -143,10 +153,8 @@
               score++;
             }
           }
-          console.log(key, value);
-
-          // Перевірка кількості вибраних варіантів
-          
+          userAnswers.push(value);
+          console.log(userAnswers);
         }
 
         result.textContent = `Ваш результат: ${score} балів`;
