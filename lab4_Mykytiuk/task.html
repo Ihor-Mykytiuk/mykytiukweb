@@ -215,8 +215,16 @@
             }
           }
         }
+        let scoreText;
+        if (score === 1) {
+          scoreText = "бал";
+        } else if (score >= 2 && score <= 4) {
+          scoreText = "бали";
+        } else {
+          scoreText = "балів";
+        }
 
-        result.textContent = `Ваш результат: ${score} балів`;
+        result.textContent = `Ваш результат: ${score} ${scoreText}`;
         tableBuild();
       });
 
