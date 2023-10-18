@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Завдання 2</title>
+    <style>
+      .valid {
+        background-color: green;
+      }
+      .valid::after {
+        content: "✓";
+        color: black;
+        font-weight: bold;
+      }
+      .invalid {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Завдання 2</h1>
+    <form>
+      <label for="email">Адреса електронної пошти:</label>
+      <input type="email" id="email" name="email" /><br />
+      <span id></span>
+
+      <label for="name">Ім'я та прізвище:</label>
+      <input type="text" id="name" name="name" /><br />
+
+      <label for="login">Логін:</label>
+      <input type="text" id="login" name="login" /><br />
+
+      <label for="password">Пароль:</label>
+      <input type="password" id="password" name="password" /><br />
+
+      <label for="postal_code">Поштовий індекс:</label>
+      <input type="text" id="postal_code" name="postal_code" /><br />
+
+      <button type="button" id="check_answer">Перевірити</button>
+    </form>
+    <script>
+      const checkButton = document.querySelector("#check_answer");
+      const form = document.querySelector("form");
+      let inputs = {
+        email: {
+          value: "",
+          valid: false,
+          regex: /^([a-z0-9]+)(\.[a-z0-9]+)*@pnu\.edu\.ua$/i,
+        },
+        name: {
+          value: "",
+          valid: false,
+          regex: /^([A-ZА-ЯІ][a-zа-яі]+[\s])([A-ZА-ЯІ]+)$/,
+        },
+        login: {
+          value: "",
+          valid: false,
+          regex: /^[a-z0-9_-]{3,16}$/i,
+        },
+        password: {
+          value: "",
+          valid: false,
+          regex:
+            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[-_!@#$%^&*;])[A-Za-z\d-_!@#$%^&*;]{8,}$/,
+        },
+        postal_code: {
+          value: "",
+          valid: false,
+          regex: /^[0-9]{5}$/,
+        },
+        validate: function () {
+          for (let key in this) {
+            if (this[key].value !== "" && key !== "validate") {
+              this[key].valid = this[key].regex.test(this[key].value);
+            }
+          }
+        },
+      };
+
+      checkButton.addEventListener("click", () => {
+        const formData = new FormData(form);
+
+        for (let [key, value] of formData) {
+          inputs[key].value = value;
+          inputs.validate();
+          if (inputs[key].valid) {
+            document.querySelector(`#${key}`).classList.add("valid");
+            document.querySelector(`#${key}`).classList.remove("invalid");
+          } else {
+            document.querySelector(`#${key}`).classList.add("invalid");
+            document.querySelector(`#${key}`).classList.remove("valid");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
