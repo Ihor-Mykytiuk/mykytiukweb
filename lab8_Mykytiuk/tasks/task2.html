@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Завдання 2</title>
+  </head>
+  <body>
+    <h1>Завдання 2</h1>
+    <div class="task2-2">
+      <p>Завдання 2.1.Виведення поточної дати, дня тижня і часу</p>
+      <p id="date"></p>
+      <p id="day"></p>
+      <p id="time"></p>
+      <button id="display-time_button1">Виконати</button>
+    </div>
+    <div class="task2-2">
+      <p>Завдання 2.2.Виведення дня і номера тижня</p>
+      <p id="dayNumber"></p>
+      <p id="dayName"></p>
+
+      <button id="display-time_button2">Виконати</button>
+    </div>
+    <div class="task2-3">
+      <p>Завдання 2.3</p>
+      <label for="">Кількість днів назад чи вперед</label>
+      <input type="number" id="daysN" value="0" />
+      <p id="dateN"></p>
+      <button id="display-time_button3">Виконати</button>
+    </div>
+    <div class="task2-4">
+      <p>Завдання 2.4</p>
+      <label for="">Рік</label>
+      <input type="number" id="year" value="0" />
+      <label for="">Місяць</label>
+      <input type="number" id="month" value="0" />
+      <p id="last-day"></p>
+    </div>
+    <script>
+      months = [
+        "січня",
+        "лютого",
+        "березня",
+        "квітня",
+        "травня",
+        "червня",
+        "липня",
+        "серпня",
+        "вересня",
+        "жовтня",
+        "листопада",
+        "грудня",
+      ];
+      days = [
+        "неділя",
+        "понеділок",
+        "вівторок",
+        "середа",
+        "четвер",
+        "п'ятниця",
+        "субота",
+      ];
+      now = new Date();
+      hours = now.getHours();
+      minutes = now.getMinutes();
+      day = now.getDay();
+      date = now.getDate();
+      month = now.getMonth();
+      year = now.getFullYear();
+
+      document.getElementById("display-time_button1").onclick = function () {
+        document.getElementById("date").innerHTML =
+          "Дата: " + date + " " + months[month] + " " + year + " року";
+        document.getElementById("day").innerHTML = "День тижня: " + days[day];
+        document.getElementById("time").innerHTML =
+          "Час: " +
+          (hours < 10 ? "0" : "") +
+          hours +
+          ":" +
+          (minutes < 10 ? "0" : "") +
+          minutes;
+      };
+
+      // ПЕРЕРОБИТИ !!!!!!!!!!!!
+      document.getElementById("display-time_button2").onclick = function () {
+        document.getElementById("dayNumber").innerHTML = "Номер тижня: " + day;
+        document.getElementById("dayName").innerHTML =
+          "День тижня: " + days[day];
+      };
+      document.getElementById("display-time_button3").onclick = function () {
+        let daysN = document.getElementById("daysN").value;
+        let dateN = new Date();
+        dateN.setDate(date + parseInt(daysN));
+        document.getElementById("dateN").innerHTML =
+          "Дата: " +
+          dateN.getDate() +
+          " " +
+          months[dateN.getMonth()] +
+          " " +
+          dateN.getFullYear() +
+          " року";
+      };
+      function getLastDayOfMonth(year, month) {
+        let date = new Date(year, month + 1, 0);
+        return date.getDate();
+      }
+    </script>
+  </body>
+</html>
