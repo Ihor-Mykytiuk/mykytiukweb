@@ -1,0 +1,43 @@
+#my_clock {
+    font-size: 50px;
+    font-weight: bold;
+  }
+  input {
+    border-radius: 5px;
+    border: white 3px solid;
+    box-shadow: 0px 0px 5px gray;
+    margin: 5px 0;
+    padding: 5px;
+  }
+  .first-task_form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    max-width: 500px;
+  }
+
+  label {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4caf50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px gray;
+  }
+
+  button:hover {
+    background-color: #3e8e41;
+  }
+  .first-task_form label {
+    margin-bottom: 10px;
+  }
+  .first-task_form input {
+    margin-bottom: 10px;
+  }
