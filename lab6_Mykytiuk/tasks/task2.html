@@ -4,50 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Завдання 2</title>
-    <style>
-      input {
-        border-radius: 5px;
-        border: white 3px solid;
-        box-shadow: 0px 0px 5px gray;
-        margin: 5px 0;
-        padding: 5px;
-      }
-      form {
-        display: grid;
-        grid-template-columns: 1.2fr 1fr 1fr;
-        align-self: center;
-        align-items: center;
-        max-width: 700px;
-      }
-      span {
-        margin-left: 20px;
-        font-size: 14px;
-      }
-      label {
-        font-size: 16px;
-        font-weight: bold;
-      }
-      button {
-        margin-top: 20px;
-        padding: 10px 20px;
-        border-radius: 5px;
-        border: none;
-        background-color: #4caf50;
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
-        box-shadow: 0px 0px 5px gray;
-      }
-
-      button:hover {
-        background-color: #3e8e41;
-      }
-
-      .invalid {
-        border: double red 3px;
-        color: red;
-      }
-    </style>
+    <link rel="stylesheet" href="../style/style.css" />
   </head>
   <body>
     <h1>Завдання 2</h1>
@@ -74,63 +31,6 @@
 
       <button type="button" id="check_answer">Перевірити</button>
     </form>
-    <script>
-      const checkButton = document.querySelector("#check_answer");
-      const form = document.querySelector("form");
-      let inputs = {
-        email: {
-          value: "",
-          valid: false,
-          regex: /^([a-z0-9]+)(\.[a-z0-9]+)*@pnu\.edu\.ua$/i,
-        },
-        name: {
-          value: "",
-          valid: false,
-          regex: /^([A-ZА-ЯІ][a-zа-яі]+[\s])([A-ZА-ЯІ]+)$/,
-        },
-        login: {
-          value: "",
-          valid: false,
-          regex: /^[a-z0-9_-]{3,16}$/i,
-        },
-        password: {
-          value: "",
-          valid: false,
-          regex:
-            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[-_!@#$%^&*;])[A-Za-z\d-_!@#$%^&*;]{8,}$/,
-        },
-        postal_code: {
-          value: "",
-          valid: false,
-          regex: /^[0-9]{5}$/,
-        },
-        validate: function () {
-          for (let key in this) {
-            if (this[key].value !== "" && key !== "validate") {
-              this[key].valid = this[key].regex.test(this[key].value);
-            }
-          }
-        },
-      };
-
-      checkButton.addEventListener("click", () => {
-        const formData = new FormData(form);
-
-        for (let [key, value] of formData) {
-          inputs[key].value = value;
-          inputs.validate();
-          if (inputs[key].valid) {
-            document.querySelector(`#${key}`).classList.add("valid");
-            document.querySelector(`#${key}`).classList.remove("invalid");
-            document.querySelector(`#${key}-message`).textContent = "✓";
-          } else {
-            document.querySelector(`#${key}`).classList.add("invalid");
-            document.querySelector(`#${key}`).classList.remove("valid");
-            document.querySelector(`#${key}-message`).textContent =
-              "Неправильний формат";
-          }
-        }
-      });
-    </script>
+    <script src="../script/script.js"></script>
   </body>
 </html>

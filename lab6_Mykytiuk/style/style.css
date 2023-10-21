@@ -1,0 +1,42 @@
+input {
+    border-radius: 5px;
+    border: white 3px solid;
+    box-shadow: 0px 0px 5px gray;
+    margin: 5px 0;
+    padding: 5px;
+  }
+  form {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    align-self: center;
+    align-items: center;
+    max-width: 700px;
+  }
+  span {
+    margin-left: 20px;
+    font-size: 14px;
+  }
+  label {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4caf50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px gray;
+  }
+
+  button:hover {
+    background-color: #3e8e41;
+  }
+
+  .invalid {
+    border: double red 3px;
+    color: red;
+  }
