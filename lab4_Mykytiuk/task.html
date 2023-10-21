@@ -193,7 +193,7 @@
         for (let key in answers) {
           answers[key].answers = []; // Очищаємо масив відповідей перед перевіркою
           answers[key].score = 0;
-          // Зміни
+
           if (Array.isArray(answers[key].correct)) {
             let selectedOptions = formData.getAll(key);
             answers[key].answers.push(selectedOptions);
@@ -234,14 +234,14 @@
         res_str += "<th>Питання</th>\n";
 
         res_str += "<th>Ваші відповіді</th>\n";
-        res_str += "<th>Правильна відповідь</th>\n";
+
         res_str += "<th>Бали</th>\n";
         let i = 1;
         for (const key in answers) {
           res_str += "<tr>\n";
           res_str += `<td>Запитання ${i}</td>\n`;
           res_str += `<td>${answers[key].answers}</td>\n`;
-          res_str += `<td>${answers[key].correct}</td>\n`;
+
           res_str += `<td>${answers[key].score}</td>\n`;
           res_str += "</tr>\n";
           i++;
