@@ -53,7 +53,7 @@ function stringsLength(string1, string2) {
       return 0;
     }
   }
-  document.getElementById("task").onclick = function () {
+  document.getElementById("task2-1__submit").onclick = function () {
     let string1 = document.getElementById("task2-1__input1").value;
     let string2 = document.getElementById("task2-1__input2").value;
     document.getElementById("task2-1__result").textContent = stringsLength(
@@ -131,28 +131,46 @@ function toCamelCase(variable) {
     let regex = /[_][a-z]/g;
     let match = variable.match(regex);
     for (let i = 0; i < match.length; i++) {
-        variable = variable.replace(match[i], match[i].charAt(1).toUpperCase());
+      variable = variable.replace(
+        match[i],
+        match[i].charAt(1).toUpperCase()
+      );
     }
     return variable;
-}
-// 3.2
-function toSnakeCase(variable) {
+  }
+  document.getElementById("task3-1__submit").onclick = function () {
+    let variable = document.getElementById("task3-1__input").value;
+    document.getElementById("task3-1__result").innerHTML =
+      toCamelCase(variable);
+  };
+  // 3.2
+  function toSnakeCase(variable) {
     let regex = /[A-Z]/g;
     let match = variable.match(regex);
     for (let i = 0; i < match.length; i++) {
-        variable = variable.replace(match[i], '_' + match[i].toLowerCase());
+      variable = variable.replace(match[i], "_" + match[i].toLowerCase());
     }
     return variable;
-}
-// 3.3
-function changeDataFormat(text) {
+  }
+  document.getElementById("task3-2__submit").onclick = function () {
+    let variable = document.getElementById("task3-2__input").value;
+    document.getElementById("task3-2__result").innerHTML =
+      toSnakeCase(variable);
+  };
+  // 3.3
+  function changeDataFormat(text) {
     let regex = /(\d{4})\/(\d{2})\/(\d{2})/g;
     let match = text.match(regex);
     for (let i = 0; i < match.length; i++) {
-        let date = match[i].split('/');
-        date = date.reverse();
-        date = date.join('/');
-        text = text.replace(match[i], date);
+      let date = match[i].split("/");
+      date = date.reverse();
+      date = date.join("/");
+      text = text.replace(match[i], date);
     }
     return text;
-}
+  }
+  document.getElementById("task3-3__submit").onclick = function () {
+    let text = document.getElementById("task3-3__input").value;
+    document.getElementById("task3-3__result").innerHTML =
+      changeDataFormat(text);
+  };
