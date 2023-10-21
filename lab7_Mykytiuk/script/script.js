@@ -43,47 +43,89 @@ function reverseNums(nums) {
   };
 
 
-// 2.1 
+// 2.1
 function stringsLength(string1, string2) {
     if (string1.length > string2.length) {
-        return 1;
+      return 1;
     } else if (string1.length < string2.length) {
-        return -1;
+      return -1;
     } else {
-        return 0;
+      return 0;
     }
-}
-// 2.2
-function charsString(string, char) {
-    let regex = new RegExp(char, 'g');
+  }
+  document.getElementById("task").onclick = function () {
+    let string1 = document.getElementById("task2-1__input1").value;
+    let string2 = document.getElementById("task2-1__input2").value;
+    document.getElementById("task2-1__result").textContent = stringsLength(
+      string1,
+      string2
+    );
+    сonsole.log(stringsLength(string1, string2));
+  };
+
+  // 2.2
+  function charsString(string, char) {
+    let regex = new RegExp(char, "g");
     let matchAll = string.matchAll(regex);
     matchAll = Array.from(matchAll);
-    let indexes = matchAll.map(match => match.index);
+    let indexes = matchAll.map((match) => match.index);
     return [indexes, matchAll.length];
-}
-// 2.3 
-function capitalize(string) {
+  }
+  document.getElementById("task2-2__submit").onclick = function () {
+    let string = document.getElementById("task2-2__input").value;
+    let char = document.getElementById("task2-2__char").value;
+    let result = charsString(string, char);
+    document.getElementById("task2-2__result1").textContent = result[0];
+    document.getElementById("task2-2__result2").textContent = result[1];
+  };
+  // 2.3
+  function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
-}
-// 2.4
-function vowelLetters(string) {
+  }
+  document.getElementById("task2-3__submit").onclick = function () {
+    let string = document.getElementById("task2-3__input").value;
+    document.getElementById("task2-3__result").textContent =
+      capitalize(string);
+  };
+  // 2.4
+  function vowelLetters(string) {
     let regex = /[aeiouy]/g;
     let match = string.match(regex);
     return match.length;
-}
-// 2.5
-function spamCheck(string) {
-    let regex = /(100% безкоштовно|збільшення продажів|тільки сьогодні|не видаляйте)/i;
+  }
+  document.getElementById("task2-4__submit").onclick = function () {
+    let string = document.getElementById("task2-4__input").value;
+    document.getElementById("task2-4__result").textContent =
+      vowelLetters(string);
+  };
+
+  // 2.5
+  function spamCheck(string) {
+    let regex =
+      /(100% безкоштовно|збільшення продажів|тільки сьогодні|не видаляйте)/i;
     return regex.test(string);
-}
-// 2.6
-function truncate(string, len) {
+  }
+  document.getElementById("task2-5__submit").onclick = function () {
+    let string = document.getElementById("task2-5__input").value;
+    document.getElementById("task2-5__result").textContent =
+      spamCheck(string);
+  };
+  // 2.6
+  function truncate(string, len) {
     if (string.length > len) {
-        return string.slice(0, len - 3) + '...';
+      return string.slice(0, len - 3) + "...";
     } else {
-        return string;
+      return string;
     }
-}
+  }
+  document.getElementById("task2-6__submit").onclick = function () {
+    let string = document.getElementById("task2-6__input").value;
+    let len = document.getElementById("task2-6__len").value;
+    document.getElementById("task2-6__result").textContent = truncate(
+      string,
+      len
+    );
+  };
 // 3.1
 function toCamelCase(variable) {
     let regex = /[_][a-z]/g;
