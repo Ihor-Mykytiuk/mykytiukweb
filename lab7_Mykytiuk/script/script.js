@@ -1,28 +1,47 @@
 // 1.1
 function reverseNums(nums) {
-    const arr = nums.split(/\d/g);
+    const arr = nums.split(" ");
     const reversedNums = arr.reverse();
-    return reversedNums.join(/\d/g);
-}
-// 1.2
-function no_zeros(arr) {
-    arr.replace(/0/g, '');
-    return arr;
-}
-// 1.3
-function reverser(string) {
-
-}
-// 1.4
-function replace(string="Я не люблю морозиво") {    
-    let arr = string.split(' ');
+    return reversedNums.join(" ");
+  }
+  document.getElementById("task1-1__submit").onclick = function () {
+    const nums = document.getElementById("task1-1__input").value;
+    document.getElementById("task1-1__result").textContent =
+      reverseNums(nums);
+  };
+  // 1.2
+  function no_zeros(arr) {
+    return arr.replace(/0/g, "");
+  }
+  document.getElementById("task1-2__submit").onclick = function () {
+    const nums = document.getElementById("task1-2__input").value;
+    document.getElementById("task1-2__result").textContent = no_zeros(nums);
+  };
+  // 1.3
+  function reverser(string) {
+    let arr = string.split("");
+    arr = arr.reverse();
+    string = arr.join("");
+    return string;
+  }
+  document.getElementById("task1-3__submit").onclick = function () {
+    const string = document.getElementById("task1-3__input").value;
+    document.getElementById("task1-3__result").textContent =
+      reverser(string);
+  };
+  // 1.4
+  function replace(string = "Я не люблю морозиво") {
+    let arr = string.split(" ");
     let temp = arr[1];
     arr[1] = arr[2];
     arr[2] = temp;
-    string = arr.join(',');
+    string = arr.join(",");
     return string;
-}
-alert(replace());
+  }
+  document.getElementById("task1-4__submit").onclick = function () {
+    document.getElementById("task1-4__result").textContent = replace();
+  };
+
 
 // 2.1 
 function stringsLength(string1, string2) {
