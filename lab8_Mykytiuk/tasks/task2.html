@@ -7,26 +7,26 @@
   </head>
   <body>
     <h1>Завдання 2</h1>
-    <div class="task2-2">
+    <div class="task2-1">
       <p>Завдання 2.1.Виведення поточної дати, дня тижня і часу</p>
       <p id="date"></p>
       <p id="day"></p>
       <p id="time"></p>
-      <button id="display-time_button1">Виконати</button>
+      <button onclick="currendDate()">Виконати</button>
     </div>
     <div class="task2-2">
       <p>Завдання 2.2.Виведення дня і номера тижня</p>
-      <p id="dayNumber"></p>
-      <p id="dayName"></p>
+      <p id="day_num"></p>
+      <p id="day_name"></p>
 
-      <button id="display-time_button2">Виконати</button>
+      <button id="num-and-name_button">Виконати</button>
     </div>
     <div class="task2-3">
       <p>Завдання 2.3</p>
       <label for="">Кількість днів назад чи вперед</label>
-      <input type="number" id="daysN" value="0" />
-      <p id="dateN"></p>
-      <button id="display-time_button3">Виконати</button>
+      <input type="number" id="days_n" value="0" />
+      <p id="date_n"></p>
+      <button id="find-date_button">Виконати</button>
     </div>
     <div class="task2-4">
       <p>Завдання 2.4</p>
@@ -35,75 +35,14 @@
       <label for="">Місяць</label>
       <input type="number" id="month" value="0" />
       <p id="last-day"></p>
+      <button id="find-last-day_button">Виконати</button>
     </div>
-    <script>
-      months = [
-        "січня",
-        "лютого",
-        "березня",
-        "квітня",
-        "травня",
-        "червня",
-        "липня",
-        "серпня",
-        "вересня",
-        "жовтня",
-        "листопада",
-        "грудня",
-      ];
-      days = [
-        "неділя",
-        "понеділок",
-        "вівторок",
-        "середа",
-        "четвер",
-        "п'ятниця",
-        "субота",
-      ];
-      now = new Date();
-      hours = now.getHours();
-      minutes = now.getMinutes();
-      day = now.getDay();
-      date = now.getDate();
-      month = now.getMonth();
-      year = now.getFullYear();
-
-      document.getElementById("display-time_button1").onclick = function () {
-        document.getElementById("date").innerHTML =
-          "Дата: " + date + " " + months[month] + " " + year + " року";
-        document.getElementById("day").innerHTML = "День тижня: " + days[day];
-        document.getElementById("time").innerHTML =
-          "Час: " +
-          (hours < 10 ? "0" : "") +
-          hours +
-          ":" +
-          (minutes < 10 ? "0" : "") +
-          minutes;
-      };
-
-      // ПЕРЕРОБИТИ !!!!!!!!!!!!
-      document.getElementById("display-time_button2").onclick = function () {
-        document.getElementById("dayNumber").innerHTML = "Номер тижня: " + day;
-        document.getElementById("dayName").innerHTML =
-          "День тижня: " + days[day];
-      };
-      document.getElementById("display-time_button3").onclick = function () {
-        let daysN = document.getElementById("daysN").value;
-        let dateN = new Date();
-        dateN.setDate(date + parseInt(daysN));
-        document.getElementById("dateN").innerHTML =
-          "Дата: " +
-          dateN.getDate() +
-          " " +
-          months[dateN.getMonth()] +
-          " " +
-          dateN.getFullYear() +
-          " року";
-      };
-      function getLastDayOfMonth(year, month) {
-        let date = new Date(year, month + 1, 0);
-        return date.getDate();
-      }
-    </script>
+    <div class="task2-5">
+      <p>Завдання 2.5</p>
+      <p id="seconds_now"></p>
+      <p id="seconds_left"></p>
+      <button id="find-seconds_button">Виконати</button>
+    </div>
+    <script src="../script/script.js"></script>
   </body>
 </html>
