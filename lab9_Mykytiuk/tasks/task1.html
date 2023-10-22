@@ -1,11 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../style/style.css" rel="stylesheet" />
     <title>Завдання 1</title>
-</head>
-<body>
-    
-</body>
+    <style>
+      [id$="__brick"] {
+        width: 40px;
+        height: 20px;
+        background: #ee6b47;
+        position: relative;
+        cursor: pointer;
+      }
+      [id$="__path"] {
+        outline: 1px solid #e8c48e;
+        width: 540px;
+        height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Завдання 1</h1>
+    <h2>Використання setInterval</h2>
+    <img
+      id="train"
+      src="https://js.cx/clipart/train.gif"
+      onclick="setIntervalAnimation()"
+    />
+    <h2>Структурована анімація</h2>
+    <progress
+      id="structure-animation__elem"
+      onclick="structureAnimation()"
+    ></progress>
+
+    <h2>Функції часу (timing functions)</h2>
+    <div class="power-animation">
+      <h3>Степінь n</h3>
+      <div id="power-animation__path">
+        <div id="power-animation__brick" onclick="powerAnimation()"></div>
+      </div>
+    </div>
+    <div class="circ-animation">
+      <h3>Дуга</h3>
+      <div id="circ-animation__path">
+        <div id="circ-animation__brick" onclick="circAnimation()"></div>
+      </div>
+    </div>
+
+    <div class="back-animation">
+      <h3>Back: стрільба з лука</h3>
+      <div id="back-animation__path">
+        <div id="back-animation__brick" onclick="backAnimation()"></div>
+      </div>
+    </div>
+
+    <div class="bounce-animation">
+      <h3>Відскок</h3>
+      <div id="bounce-animation__path">
+        <div id="bounce-animation__brick" onclick="bounceAnimation()"></div>
+      </div>
+    </div>
+    <div class="elastic-animation">
+      <h3>Еластична анімація</h3>
+      <div id="elastic-animation__path">
+        <div id="elastic-animation__brick" onclick="elasticAnimation()"></div>
+      </div>
+    </div>
+    <h2>Реверс: ease*</h2>
+
+    <div class="easeOut-animation">
+      <h3>easeOut</h3>
+      <div id="easeOut-animation__path">
+        <div id="easeOut-animation__brick" onclick="easeOutAnimation()"></div>
+      </div>
+    </div>
+    <div class="easeInOut-animation">
+      <h3>easeInOut</h3>
+      <div id="easeInOut-animation__path">
+        <div
+          id="easeInOut-animation__brick"
+          onclick="easeInOutAnimation()"
+        ></div>
+      </div>
+    </div>
+    <h2>Функція "draw"</h2>
+    <textarea id="textExample" rows="5" cols="60">
+He took his vorpal sword in hand:
+Long time the manxome foe he sought—
+So rested he by the Tumtum tree,
+And stood awhile in thought.
+          </textarea
+    >
+
+    <button onclick="animateText(textExample)">Run the animated typing!</button>
+    <script src="../script/script.js"></script>
+  </body>
 </html>
