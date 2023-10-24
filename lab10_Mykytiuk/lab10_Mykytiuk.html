@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "- // W3C // DTD XHTML 1.0 Transitional // EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <script type="text/javascript" src="jquery-3.7.1.min"></script>
+    <script src="jquery-3.7.1.js"></script>
+
+    <script>
+      $(Document).ready(function () {
+        var $text = $("#hide_text"); // присвоюємо змінній text блок з id = hide_text
+        $text.hide(); // приховуємо отриманий блок
+        $(".button").click(function () {
+          // при кліці на HTML елемент з класом button
+          $text.show(200); // показуємо прихований блок із затримкою 200 мілісекунд
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Контент сторінки</h1>
+    <a href="#" class="button"> Натисніть, щоб показати текст </a>
+    <div id="hide_text">Демонстраційний прихований текст</div>
+    <br />
+    <a href="task2.html">Завдання 2</a>
+    <a href="task3.html">Завдання 3</a>
+  </body>
+</html>
