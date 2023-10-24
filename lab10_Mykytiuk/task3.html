@@ -4,29 +4,88 @@
     <script type="text/javascript" src="jquery-3.7.1.min"></script>
     <script src="jquery-3.7.1.js"></script>
     <style>
-      .highlight {
+      .my_div {
+        padding: 20px;
+        width: fit-content;
+        border: solid red 1px;
+      }
+      .changed {
         background-color: aqua;
         border: solid red 1px;
+        width: fit-content;
+      }
+      .show-image {
+        cursor: pointer;
+      }
+      .image-container {
         width: fit-content;
       }
     </style>
     <script>
       $(Document).ready(function () {
         $(".my_div").bind("click", function () {
-          $(this).addClass("highlight");
+          $(this).addClass("changed");
         });
         $(".my_div").bind("dblclick", function () {
-          $(this).removeClass("highlight");
+          $(this).removeClass("changed");
+        });
+        $(".single-click").bind("click", function () {
+          alert("Одинарний клік");
+        });
+        $(".double-click").bind("dblclick", function () {
+          alert("Подвійний клік");
+        });
+        $(".image-container").hide();
+        $(".image-caption").hide();
+        $(".show-image").bind("click", function () {
+          $(".image-container").show();
+        });
+        $(".image-container").bind("click", function () {
+          $(this).hide();
+        });
+        $(".image-container").bind("mouseover", function () {
+          $(".image-caption").show();
+        });
+        $(".image-container").bind("mouseout", function () {
+          $(".image-caption").hide();
+        });
+        $("form").submit(function () {
+          if ($("input:first").val() == "correct") {
+            $("span").text("Перевіряєм...").show();
+            return true;
+          }
+          $("span").text("Неправильно!").show().fadeOut(1000);
+          return false;
         });
       });
-
     </script>
   </head>
   <body>
     <h1>Завдання 3</h1>
-    <h2>1</h2>
+    <h2>Пункт 1</h2>
     <div class="my_div">div-об'єкт</div>
-    <h2>2</h2>
-    button.
+    <h2>Пункт 2</h2>
+    <button class="single-click">Клік</button>
+    <button class="double-click">Клік</button>
+    <h2>Пункт 3</h2>
+    <p class="show-image">Показати зображення</p>
+    <div class="image-container">
+      <img
+        src="image.jpg"
+        alt="Silhouette a woman rock climbing"
+        id="climbing-image"
+      />
+      <p class="image-caption">Силует жінки, яка займається скелелазінням</p>
+    </div>
+    <h2>Пункт 4</h2>
+    <p>Введіть в текстове поле слово 'correct'.</p>
+
+    <form action="javascript:alert('Успішно!');">
+      <div>
+        <input type="text" />
+        <input type="submit" />
+      </div>
+    </form>
+    <span></span>
   </body>
 </html>

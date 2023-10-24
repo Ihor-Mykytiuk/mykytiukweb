@@ -5,11 +5,13 @@
     <script src="jquery-3.7.1.js"></script>
 
     <style>
-      .highlight {
+      .changed {
         background-color: yellow;
       }
-      .highlight::after {
-        content: " (highlighted)";
+      .my_div {
+        padding: 20px;
+        width: fit-content;
+        border: solid red 1px;
       }
     </style>
     <script>
@@ -19,10 +21,10 @@
 
         $(".my_div").hover(
           function () {
-            $(this).addClass("highlight");
+            $(this).addClass("changed");
           },
           function () {
-            $(this).removeClass("highlight");
+            $(this).removeClass("changed");
           }
         );
       });
