@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="jquery-3.7.1.min"></script>
+    <script src="jquery-3.7.1.js"></script>
+    <title>Завдання 1</title>
+  </head>
+  <body>
+    <h1>Завдання 1</h1>
+    <div class="method-html">
+      <h2>Метод .html()</h2>
+      <button class="method-html__button">Натисніть, щоб вставити абзац</button>
+      <div id="method-html__text-block"></div>
+    </div>
+    <div class="method-css">
+      <h2>Метод .css()</h2>
+      <button class="method-css__button">
+        Натисніть, щоб змінити колір тексту
+      </button>
+      <div id="method-css__text-block">Текст</div>
+    </div>
+    <div class="method-val">
+      <h2>Метод .val()</h2>
+      <input type="text" id="method-val__input" />
+      <button class="method-val__button">
+        Натисніть, щоб вивести значення
+      </button>
+      <div id="method-val__text-block"></div>
+    </div>
+    <div class="method-attr">
+      <div class="attr-name">
+        <h2>.attr (ім'я атрибута)</h2>
+        <button class="attr-name__button">
+          Натисніть, щоб вивести значення атрибута
+        </button>
+        <div id="attr-name__text-block"></div>
+      </div>
+      <div class="attr-name-value">
+        <h2>.attr (ім'я атрибута, значення)</h2>
+        <button class="attr-name-value__button">
+          Натисніть, щоб вставити атрибут з значенням (href)</button
+        ><br />
+        <a id="attr-name-value__link">посилання</a>
+      </div>
+      <div class="attr-attributes">
+        <h2>.attr (атрибути)</h2>
+        <button class="attr-attributes__button">
+          Натисніть, щоб вставити атрибути (зображення)</button
+        ><br />
+        <img id="attr-attributes__image" />
+      </div>
+      <div class="attr-name-function">
+        <h2>.attr (ім'я атрибута, функція)</h2>
+        <button class="attr-name-function__button">
+          Натисніть, щоб вставити атрибут з функцією
+        </button>
+        <button id="myButton" disabled>кнопка</button>
+        <div id="attr-name-function__text-block"></div>
+      </div>
+      <div class="attr-remove">
+        <h2>.removeAttr (ім'я атрибута)</h2>
+        <button class="attr-remove__button">
+          Натисніть, щоб видалити атрибут (href)
+        </button>
+        <a href="https://www.google.com" id="attr-remove__link">посилання</a>
+      </div>
+    </div>
+    <script>
+      $(Document).ready(function () {
+        $(".method-html__button").click(function () {
+          $("#method-html__text-block").html("<p>Абзац</p>");
+        });
+        $(".method-css__button").click(function () {
+          $("#method-css__text-block").css("color", "red");
+        });
+        $(".method-val__button").click(function () {
+          $("#method-val__text-block").html($("#method-val__input").val());
+        });
+        $(".attr-name__button").click(function () {
+          $("#attr-name__text-block").html(
+            $("#attr-name__text-block").attr("id")
+          );
+        });
+        $(".attr-name-value__button").click(function () {
+          $("#attr-name-value__link").attr("href", "https://www.google.com");
+        });
+        $(".attr-attributes__button").click(function () {
+          $("#attr-attributes__image").attr({
+            src: "../image.jpg",
+            alt: "hillclimbing",
+          });
+        });
+        $(".attr-name-function__button").click(function () {
+          $("#myButton").attr("disabled", function (_, attrValue) {
+            return !attrValue; // Змінюємо значення на протилежне
+          });
+        });
+        $(".attr-remove__button").click(function () {
+          $("#attr-remove__link").removeAttr("href");
+        });
+      });
+    </script>
+  </body>
+</html>
