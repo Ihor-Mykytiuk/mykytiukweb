@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="jquery-3.7.1.min"></script>
+    <script src="jquery-3.7.1.js"></script>
+    <style>
+      .width-and-position__div {
+        padding: 35px;
+        width: fit-content;
+        border: 1px red solid;
+      }
+    </style>
+    <title>Завдання 2</title>
+  </head>
+  <body>
+    <h1>Завдання 2</h1>
+    <div class="method-wrapInner">
+      <h2>.wrapInner</h2>
+      <p class="wrapInner__text">Натисніть, щоб обгорнути текст</p>
+    </div>
+    <div class="method-replaceWith">
+      <h2>.replaceWith</h2>
+      <p class="replaceWith__text">Натисніть, щоб замінити текст</p>
+    </div>
+    <div class="width-and-position">
+      <h2>.width; .position</h2>
+      <div class="width-and-position__div">div-об'єкт</div>
+      <button class="width-and-position__button">
+        Натисніть, щоб вивести позицію та розмір</button
+      ><br />
+      <span id="width-and-position__width"></span><br />
+      <span id="width-and-position__position"></span><br />
+    </div>
+    <script>
+      $(document).ready(function () {
+        $(".wrapInner__text").click(function () {
+          $(this).wrapInner("<b></b>");
+        });
+        $(".replaceWith__text").click(function () {
+          $(this).replaceWith("<b>Текст замінено</b>");
+        });
+        $(".width-and-position__button").click(function () {
+          $("#width-and-position__width").text(
+            "Ширина: " + $(".width-and-position__div").width()
+          );
+          $("#width-and-position__position").text(
+            "Позиція: " +
+              "top: " +
+              $(".width-and-position__div").position().top +
+              " left: " +
+              $(".width-and-position__div").position().left
+          );
+        });
+      });
+    </script>
+  </body>
+</html>
