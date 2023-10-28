@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script type="text/javascript" src="jquery-3.7.1.min"></script>
+    <script src="jquery-3.7.1.js"></script>
+    <style>
+      .method-parent__container *,
+      .method-chirdren__container * {
+        display: block;
+        border: 2px solid lightgrey;
+        color: lightgrey;
+        padding: 5px;
+        margin: 15px;
+      }
+      .method-chirdren__container,
+      .method-parent__container {
+        width: 500px;
+      }
+    </style>
+    <title>Завдання 3</title>
+  </head>
+  <body>
+    <h1>Завдання 3</h1>
+    <div class="method-first">
+      <h2>.first()</h2>
+      <ul>
+        <li>Перший елемент списку</li>
+        <li>Другий елемент списку</li>
+        <li>Третій елемент списку</li>
+      </ul>
+      <button class="method-first__button">Продемонструвати виконання</button
+      ><br />
+    </div>
+    <div class="method-parent">
+      <h2>.parent()</h2>
+      <div class="method-parent__container">
+        <div>
+          div (пра-пра-блок)
+          <ul>
+            ul (пра-блок)
+            <li>
+              li (parent блок)
+              <span>span</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <button class="method-parent__button">Продемонструвати виконання</button>
+    </div>
+    <div class="method-chirdren">
+      <h2>.chirdren()</h2>
+      <div class="method-chirdren__container">
+        <div>
+          div (пра-блок)
+          <ul>
+            ul (parent блок)
+            <li>
+              li (child блок)
+              <span>span (онук)</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <button class="method-chirdren__button">
+        Продемонструвати виконання
+      </button>
+    </div>
+    <div class="method-last">
+        <h2>.last()</h2>
+        <ul>
+            <li>Перший елемент списку</li>
+            <li>Другий елемент списку</li>
+            <li>Третій елемент списку</li>
+        </ul>
+        <button class="method-last__button">Продемонструвати виконання</button
+        ><br />
+    </div>
+    <div class="method-prev">
+        <h2>.prev()</h2>
+        <ul>
+            <li>Перший елемент списку</li>
+            <li>Другий елемент списку (попередній)</li>
+            <li class="method-prev__current">Третій елемент списку (поточний)</li>
+            <li>Четвертий елемент списку</li>
+        </ul>
+        <button class="method-prev__button">Продемонструвати виконання</button
+        ><br />
+    </div>
+    <script>
+      $(document).ready(function () {
+        $(".method-first__button").click(function () {
+          $(".method-first li").first().css("color", "red");
+        });
+        $(".method-parent__button").click(function () {
+          $(".method-parent__container span")
+            .parent()
+            .css({ color: "red", border: "2px solid red" });
+        });
+        $(".method-chirdren__button").click(function () {
+          $(".method-chirdren__container ul")
+            .children()
+            .css({ color: "red", border: "2px solid red" });
+        });
+        $(".method-last__button").click(function () {
+          $(".method-last li").last().css("color", "red");
+        });
+        $(".method-prev__button").click(function () {
+          $(".method-prev__current").prev().css("color", "red");
+        });
+      });
+    </script>
+  </body>
+</html>
