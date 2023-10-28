@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="jquery-3.7.1.min"></script>
+    <script src="jquery-3.7.1.js"></script>
+    <title>Завдання 5</title>
+  </head>
+  <body>
+    <h1>Завдання 5</h1>
+    <div class="methods">
+      <h2>Методи .map() та .inArray()</h2>
+      <ul>
+        <li>Один</li>
+        <li>Два</li>
+        <li>Три</li>
+        <li>Чотири</li>
+        <li>П'ять</li>
+      </ul>
+      <label for="">Введіть елемент з списку</label>
+      <input class="methods__input" type="text" />
+      <button class="methods__button">Натисніть, щоб вивести його індекс</button>
+      <div class="methods__text-block"></div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        $(".methods__button").click(function () {
+          let list = $(".methods ul li")
+            .map(function () {
+              return $(this).text();
+            })
+            .get();
+
+          let input = $(".methods__input").val();
+          let index = $.inArray(input, list);
+
+          $(".methods__text-block").text(index);
+        });
+      });
+    </script>
+  </body>
+</html>
