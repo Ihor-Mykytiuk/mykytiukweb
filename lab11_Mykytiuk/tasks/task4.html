@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="jquery-3.7.1.min"></script>
+    <script src="jquery-3.7.1.js"></script>
+    <title>Завдання 4</title>
+  </head>
+  <body>
+    <h1>Завдання 4</h1>
+    <div class="method-filter">
+      <ul class="method-filter__list list">
+        <li>Перший елемент списку</li>
+        <li>Другий елемент списку</li>
+        <li>Третій елемент списку</li>
+        <li class="list-element">Четвертий елемент списку</li>
+        <li>П'ятий елемент списку</li>
+        <li class="list-element">Шостий елемент списку</li>
+        <li class="list-element">Сьомий елемент списку</li>
+        <li>Восьмий елемент списку</li>
+        <li>Дев'ятий елемент списку</li>
+        <li>Десятий елемент списку</li>
+      </ul>
+      <button class="method-filter__button1">
+        Змінити всі елементів класу "list-element"
+      </button>
+      <button class="method-filter__button2">
+        Змінити кожен третій елемент &lt;li&gt;
+      </button>
+    </div>
+    <script>
+      $(document).ready(function () {
+        function resetStyles() {
+          $("li").css("color", "");
+          $("li").text(function () {
+            return $(this).text().replace(" modify", "");
+          });
+        }
+        $(".method-filter__button1").click(function () {
+          resetStyles();
+          $(".list-element").filter(function () {
+            $(this).css("color", "red");
+            $(this).text($(this).text() + " modify");
+          });
+        });
+
+        $(".method-filter__button2").click(function () {
+          resetStyles();
+          $("li:nth-child(3n)").filter(function () {
+            $(this).css("color", "red");
+            $(this).text($(this).text() + " modify");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
