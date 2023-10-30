@@ -19,14 +19,14 @@
       <p id="day_num"></p>
       <p id="day_name"></p>
 
-      <button id="num-and-name_button">Виконати</button>
+      <button id="num-and-name_button" onclick="showDayInfo()">Виконати</button>
     </div>
     <div class="task2-3">
       <p>Завдання 2.3</p>
       <label for="">Кількість днів назад чи вперед</label>
       <input type="number" id="days_n" value="0" />
       <p id="date_n"></p>
-      <button id="find-date_button">Виконати</button>
+      <button id="find-date_button" onclick="findDate()">Виконати</button>
     </div>
     <div class="task2-4">
       <p>Завдання 2.4</p>
@@ -35,13 +35,15 @@
       <label for="">Місяць</label>
       <input type="number" id="month" value="0" />
       <p id="last-day"></p>
-      <button id="find-last-day_button">Виконати</button>
+      <button id="find-last-day_button" onclick="showLastDay()">
+        Виконати
+      </button>
     </div>
     <div class="task2-5">
       <p>Завдання 2.5</p>
       <p id="seconds_now"></p>
       <p id="seconds_left"></p>
-      <button id="find-seconds_button">Виконати</button>
+      <button id="find-seconds_button" onclick="showSeconds()">Виконати</button>
     </div>
     <script src="../script/script.js"></script>
   </body>
