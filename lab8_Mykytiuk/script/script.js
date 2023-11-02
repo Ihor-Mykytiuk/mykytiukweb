@@ -133,4 +133,30 @@ function showSeconds() {
   document.getElementById("seconds_left").innerHTML =
     "Секунд залишилось: " + seconds.secondsLeft;
 }
-  
+// 2.6
+function formatDate(inputDate) {
+  const date = new Date(inputDate);
+  const now = new Date();
+
+  const timeDiff = now - date;
+  const secondsDiff = Math.floor(timeDiff / 1000);
+  const minutesDiff = Math.floor(secondsDiff / 60); 
+
+  if (secondsDiff < 60) {
+      return `${secondsDiff} сек. назад`;
+  } else if (minutesDiff < 60) {
+      return `${minutesDiff} хв. назад`;
+  } else {
+      const day = String(date.getDate()).padStart(2, '0');
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const year = date.getFullYear();
+      const hours = String(date.getHours()).padStart(2, '0');
+      const minutes = String(date.getMinutes()).padStart(2, '0');
+
+      return `${day}.${month}.${year} ${hours}:${minutes}`;
+  }
+}
+function showDate() {
+  let date = document.getElementById("date_input").value;
+  document.getElementById("date_output").innerHTML = formatDate(date);
+}
