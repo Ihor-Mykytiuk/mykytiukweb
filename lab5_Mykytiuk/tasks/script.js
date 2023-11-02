@@ -12,7 +12,7 @@ function tabSwitch(new_tab, new_content) {
          
 }
 //--------------------------------------------------------------
-function tabSwitch(active) {
+function subMenuSwitch(active) {
   let activeMenu = document.querySelector(`.${active}`);
   let subMenus = document.querySelectorAll(".nav ul");
 
