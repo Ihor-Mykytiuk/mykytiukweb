@@ -68,13 +68,11 @@ function currendDate() {
   let date = now.getDate();
   let month = now.getMonth();
   let year = now.getFullYear();
-  document.getElementById("date").innerHTML =
-    "Дата: " + date + " " + months[month] + " " + year + " року";
+  document.getElementById("date").innerHTML = "Дата: " + date + " " + 
+    months[month] + " " + year + " року";
   document.getElementById("day").innerHTML = "День тижня: " + days[day];
   document.getElementById("time").innerHTML =
-    "Час: " +
-    (hours < 10 ? "0" : "") + hours + ":" +
-    (minutes < 10 ? "0" : "") + minutes;
+    "Час: " + (hours < 10 ? "0" : "") + hours + ":" + (minutes < 10 ? "0" : "") + minutes;
 }
 // 2.2
 function getDayInfo(dateObject) {
@@ -135,28 +133,43 @@ function showSeconds() {
 }
 // 2.6
 function formatDate(inputDate) {
-  const date = new Date(inputDate);
+  const parts = inputDate.split(' ');
+  const datePart = parts[0];
+  const timePart = parts[1];
+  
+  const [day, month, year] = datePart.split('.');
+  const [hours, minutes] = timePart.split(':');
+
+  const date = new Date(year, month - 1, day, hours, minutes);
   const now = new Date();
 
   const timeDiff = now - date;
   const secondsDiff = Math.floor(timeDiff / 1000);
   const minutesDiff = Math.floor(secondsDiff / 60); 
-
+  
+ 
   if (secondsDiff < 60) {
       return `${secondsDiff} сек. назад`;
   } else if (minutesDiff < 60) {
       return `${minutesDiff} хв. назад`;
   } else {
-      const day = String(date.getDate()).padStart(2, '0');
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const year = date.getFullYear();
-      const hours = String(date.getHours()).padStart(2, '0');
-      const minutes = String(date.getMinutes()).padStart(2, '0');
-
-      return `${day}.${month}.${year} ${hours}:${minutes}`;
+    const nowDay = now.getDate();
+    const nowMonth = now.getMonth();
+    const nowYear = now.getFullYear();
+    const nowHours = now.getHours();
+    const nowMinutes = now.getMinutes();
+    let timeStr = "", dateStr = "";
+    dateStr += (nowDay < 10 ? "0" : "") + nowDay;
+    dateStr += (nowMonth < 10 ? ".0" : ".") + nowMonth;
+    dateStr += "." + nowYear;
+    timeStr += (nowHours < 10 ? "0" : "") + nowHours;
+    timeStr += (nowMinutes < 10 ? ":0" : ":") + nowMinutes;
+    
+    return `${dateStr} ${timeStr}`;
   }
 }
+
 function showDate() {
-  let date = document.getElementById("date_input").value;
-  document.getElementById("date_output").innerHTML = formatDate(date);
+  let date = document.getElementById("date__input").value;
+  document.getElementById("date__output").innerHTML = formatDate(date);
 }
