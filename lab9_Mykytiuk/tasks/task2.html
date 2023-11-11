@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../style/style.css" rel="stylesheet" />
     <title>Завдання 2</title>
-</head>
-<body>
-    
-</body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="logo-container" onclick="logoAnimation()">
+        <div id="logo-text">Software Engineering</div>
+        <div id="letters-container">
+          <div class="logo-letter" id="letterI">I</div>
+          <div class="logo-letter" id="letterP">P</div>
+          <div class="logo-letter" id="letterZ">Z</div>
+        </div>
+      </div>
+    </div>
+    <script src="../script/script.js"></script>
+  </body>
 </html>

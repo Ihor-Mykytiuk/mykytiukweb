@@ -11,7 +11,7 @@ function setIntervalAnimation() {
     }, 20);
   }
 
-  function animate({duration, draw, timing}) {
+function animate({duration, draw, timing}) {
 
     let start = performance.now();
   
@@ -43,6 +43,9 @@ function structureAnimation() {
 };
 
 // timing functions
+function linear(timeFraction) {
+    return timeFraction;
+  }
 function quad(timeFraction) {
     return Math.pow(timeFraction, 2)
 }
@@ -160,3 +163,67 @@ function animateText(textArea) {
       }
     });
   }
+
+let isAnimation = false;
+function logoAnimation() {
+    let logoText = document.getElementById("logo-text");
+    logoText.style.display = "block";
+    // Перевірка чи є активна анімація
+    if (isAnimation) {
+         return;
+    }
+    isAnimation = true;
+    // Анімація для літери I
+    animate({
+        duration: 1000,
+        timing: quad,
+        draw: function (progress) {
+            document.getElementById("letterI").style.transform = "scale(" + progress + ")";
+        },
+    });
+
+    // Анімація для літери P
+    animate({
+        duration: 1000,
+        timing: circ,
+        draw: function (progress) {
+            document.getElementById("letterP").style.transform = "rotate(" + 360 * progress + "deg)";
+        },
+    });
+
+    // Анімація для літери Z
+    animate({
+        duration: 1000,
+        timing: back.bind(null, 1.7),
+        draw: function (progress) {
+            document.getElementById("letterZ").style.opacity = progress;
+        },
+    });
+    // Анімація для текстової інформації (появлення та пропадання)
+
+     // Анімація для появлення текстової інформації
+    animate({
+        duration: 1500,
+        timing: linear,
+        draw: function (progress) {
+            logoText.style.opacity = progress;
+            logoText.style.transform = "translateY(" + 60 * progress + "px)";
+        },
+    });
+
+    // Анімація для зникнення текстової інформації
+    setTimeout(function () {
+        animate({
+            duration: 1000,
+            timing: quad,
+            draw: function (progress) {
+                if (progress > 0.99) {
+                  logoText.style.display = "none";
+                  isAnimation = false;
+                }
+                logoText.style.opacity = 1 - progress;
+                logoText.style.transform = "translateY(" + 60 * (1 - progress) + "px)";
+            },
+        });
+    }, 2000); // Очікуємо 2 секунди перед початком анімації зникнення
+}

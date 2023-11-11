@@ -1,14 +1,75 @@
 #train {
-    position: relative;
-    cursor: pointer;
+  position: relative;
+  cursor: pointer;
+}
+[id$="__brick"] {
+  width: 40px;
+  height: 20px;
+  background: #ee6b47;
+  position: relative;
+  cursor: pointer;
+}
+[id$="__path"] {
+  outline: 1px solid #e8c48e;
+  width: 540px;
+  height: 20px;
 }
 textarea {
-    display: block;
-    border: 1px solid #BBB;
-    color: #444;
-    font-size: 110%;
-  }
+  display: block;
+  border: 1px solid #BBB;
+  color: #444;
+  font-size: 110%;
+}
   
-  button {
-    margin-top: 10px;
-  }
+button {
+  margin-top: 10px;
+}
+
+.wrapper {
+  height: 100vh;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#letters-container {
+  display: flex;
+  cursor: pointer;
+  z-index: 1;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  width: 600px;
+  height: max-content;
+}
+.logo-letter {
+  width: 80px;
+  height: 100px;
+  margin: 0 12px;
+  border-radius: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 30px;
+  color: #fff;
+}
+
+#logo-text {
+  display: none;
+  position: absolute;
+  top: 40px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #817a68;
+}
+#letterI, #letterZ {
+  background-color: #555;
+}
+#letterP{
+  background-color: #777;
+}
