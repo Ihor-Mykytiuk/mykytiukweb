@@ -36,7 +36,7 @@
             padding: 5px 10px;
             border-radius: 5px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-            user-select: none; /* Заборона виділення тексту на стрілках */
+            user-select: none; 
         }
 
         .arrow.active {
@@ -137,19 +137,19 @@
 
         $(document).keydown(function (e) {
             switch (e.which) {
-                case 37: // left arrow key
+                case 37: 
                     moveFigure("left-arrow");
                     highlightArrow("#left-arrow");
                     break;
-                case 38: // up arrow key
+                case 38:
                     moveFigure("up-arrow");
                     highlightArrow("#up-arrow");
                     break;
-                case 39: // right arrow key
+                case 39: 
                     moveFigure("right-arrow");
                     highlightArrow("#right-arrow");
                     break;
-                case 40: // down arrow key
+                case 40: 
                     moveFigure("down-arrow");
                     highlightArrow("#down-arrow");
                     break;
