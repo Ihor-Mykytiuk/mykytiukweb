@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="jquery-3.7.1.min"></script>
+    <script src="jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <title>Завдання 1</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #ecf0f1;
+        overflow: hidden;
+      }
+
+      #figure {
+        width: 100px;
+        height: 60px;
+        background-color: #3498db;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0.5;
+      }
+
+      .arrow {
+        position: absolute;
+        font-size: 24px;
+        color: #333;
+        cursor: pointer;
+        background-color: #eee;
+        padding: 5px 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        user-select: none; 
+      }
+
+      .arrow.active {
+        background-color: #ddd;
+        color: red;
+      }
+
+      #up-arrow {
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      #down-arrow {
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      #left-arrow {
+        top: 50%;
+        left: 20px;
+        transform: translateY(-50%);
+      }
+
+      #right-arrow {
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="figure"></div>
+    <div class="arrow" id="up-arrow">&#8593;</div>
+    <div class="arrow" id="down-arrow">&#8595;</div>
+    <div class="arrow" id="left-arrow">&#8592;</div>
+    <div class="arrow" id="right-arrow">&#8594;</div>
+
+    <script>
+      $(document).ready(function () {
+        var position = { top: 50, left: 50 };
+
+        function moveFigure(direction) {
+          switch (direction) {
+            case "up-arrow":
+              position.top = Math.max(position.top - 10, 0);
+              break;
+            case "down-arrow":
+              position.top = Math.min(position.top + 10, 100);
+              break;
+            case "left-arrow":
+              position.left = Math.max(position.left - 10, 0);
+              break;
+            case "right-arrow":
+              position.left = Math.min(position.left + 10, 100);
+              break;
+          }
+
+          $("#figure").animate(
+            {
+              top: position.top + "%",
+              left: position.left + "%",
+              opacity: 1,
+              width: "100px",
+              height: "60px",
+            },
+            {
+              duration: 500,
+              easing: "easeInQuad",
+              complete: function () {
+                $(this).css("opacity", 0.5);
+              },
+              queue: false,
+            }
+          );
+        }
+
+        function highlightArrow(arrowId) {
+          $(".arrow").removeClass("active");
+          $(arrowId).addClass("active");
+        }
+
+        function resetArrowStyles() {
+          $(".arrow").removeClass("active");
+        }
+
+        $(".arrow").on("mousedown", function () {
+          var direction = $(this).get(0).id;
+          moveFigure(direction);
+          highlightArrow("#" + direction);
+        });
+
+        $(".arrow").on("mouseup mouseleave", function () {
+          resetArrowStyles();
+        });
+
+        $(document).keydown(function (e) {
+          switch (e.which) {
+            case 37: 
+              moveFigure("left-arrow");
+              highlightArrow("#left-arrow");
+              break;
+            case 38: 
+              moveFigure("up-arrow");
+              highlightArrow("#up-arrow");
+              break;
+            case 39: 
+              moveFigure("right-arrow");
+              highlightArrow("#right-arrow");
+              break;
+            case 40: 
+              moveFigure("down-arrow");
+              highlightArrow("#down-arrow");
+              break;
+          }
+        });
+
+        $(document).keyup(function () {
+          resetArrowStyles();
+        });
+      });
+    </script>
+  </body>
+</html>
