@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="jquery-3.7.1.min"></script>
+    <script src="jquery-3.7.1.js"></script>
+    <style>
+      #method__slideToggle-block,
+      #method__slideUp-block,
+      #method__slideDown-block {
+        background-color: #f0f0f0;
+        width: 100px;
+        height: 100px;
+        margin-top: 10px;
+      }
+    </style>
+    <title>Завдання 7</title>
+  </head>
+  <body>
+    <h1>Завдання 7</h1>
+    <div class="method__slideDown">
+      <h2>Метод .slideDown()</h2>
+      <button class="method__slideDown__button">
+        Натисніть, щоб виконати метод
+      </button>
+      <div id="method__slideDown-block"></div>
+    </div>
+    <div class="method__slideToggle">
+      <h2>Метод .slideToggle()</h2>
+      <button class="method__slideToggle__button">
+        Натисніть, щоб виконати метод
+      </button>
+      <div id="method__slideToggle-block"></div>
+    </div>
+    <div class="method__slideUp">
+      <h2>Метод .slideUp()</h2>
+      <button class="method__slideUp__button">
+        Натисніть, щоб виконати метод
+      </button>
+      <div id="method__slideUp-block"></div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        $("#method__slideDown-block").hide();
+        $(".method__slideDown__button").click(function () {
+          $("#method__slideDown-block").slideDown();
+        });
+        $(".method__slideToggle__button").click(function () {
+          $("#method__slideToggle-block").slideToggle();
+        });
+        $(".method__slideUp__button").click(function () {
+          $("#method__slideUp-block").slideUp();
+        });
+      });
+    </script>
+  </body>
+</html>
